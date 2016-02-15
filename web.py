@@ -5,6 +5,11 @@ from flask import Flask, render_template, url_for
 
 course = Flask(__name__)
 
+@course.route("/Day <day>/<topic>")
+def show_topic(day, topic):
+    return render_template("{}/index.html".format(topic))
+
+
 @course.route("/")
 def home():
     return render_template("index.html")

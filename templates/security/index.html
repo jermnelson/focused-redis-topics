@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="row">
+		<section class="col-md-8">
+		<h3>Focused Topics in Redis Day 2</h3>
+		<h1>Security</h1>
+      
+		</section>
+</div>
+<hr>
+{% include "security/default.html" %}
+<hr>
+{% include "security/master-slave.html" %}
+<hr>
+{% include "security/cluster.html" %}
+<hr>
+{% include "security/high-availability.html" %}
+<hr>
+{% endblock %}
