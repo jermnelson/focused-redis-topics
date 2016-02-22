@@ -9,22 +9,34 @@
 		<strong>Jeremy Nelson</strong><br>
         Course Instructor<br>
 		Colorado Springs, CO 80904<br>
-		Email: <a href="mailto:jeremy.nelson@coloradocollege.edu">jeremy.nelson@coloradocollege.edu</a>
+		Email: <a href="mailto:jermnelson@gmail.com">jermnelson@gmail.com</a>
 </address>
 </section>
 <section class="col-md-4">
-	<h2>Day 1</h2>
+		<h2>Day 1 <sup><a href="{{ url_for('show_topic', day="day-one") }}" style="font-size: .70em">
+						<i class="fa fa-info-circle fa-sm"></i></a></sup>
+		</h2>
 		<ul>
+				<li><a href="{{ url_for("show_topic", day="day-one", topic="data-structures") }}">Overview of Data Structures</a></li>
+				<li><a href="{{ url_for("show_topic", day="day-one", topic="key-schemas-and-orm") }}">Key Schemas &amp; ORMs</a></li>
+				<li><a href="{{ url_for("show_topic", day="day-one", topic="master-slave-replication") }}">Master-Slave Replication</a></li>
+				<li><a href="{{ url_for("show_topic", day="day-one", topic="intro-redis-cluster") }}">Introduction to Redis Cluster</a></li>
 		</ul>
-	<h2>Day 2</h2>
-	<ul>
-			<li><a href="{{ url_for('show_topic', day=2, topic='security') }}">Security</a></li>
+		<h2>Day 2 <sup><a href="{{ url_for('show_topic', day="day-two") }}" style="font-size: .70em">
+		<i class="fa fa-info-circle fa-sm"></i></a></sup></h2>
+		<ul>
+            <li><a href="{{ url_for('show_topic', day="day-two", topic='ha-redis-sentinel') }}">High Availablity w/Redis Sentinel</a></li>
+			<li><a href="{{ url_for('show_topic', day="day-two", topic='security') }}">Security</a></li>
+            <li><a href="{{ url_for('show_topic', day="day-two", topic='lua-scripting') }}">Lua Scripting</a></li>
+
 		</ul>
 
-	<h2>Day 3</h2>
+		<h2>Day 3 <sup><a href="{{ url_for('show_topic', day="day-three") }}" style="font-size: .70em"><i class="fa fa-info-circle fa-sm"></i></a></sup>
+		</h2>
 		<ul>
+			<li><a href="{{ url_for("show_topic", day="day-three", topic="latency") }}">Trouble-shooting Redis Latency</a></li>
 		</ul>
 
-		</section>
+</section>
 </div>
 {% endblock %}

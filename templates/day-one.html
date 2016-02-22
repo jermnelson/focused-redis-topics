@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h2>March 9<sup>th</sup></h2>
+<h1>Focused Topics on Redis: Day 1</h1>
+	<h3>Morning</h3>
+	<ul>
+		<li><a href="{{ url_for("show_topic", day="day-one", topic="data-structures") }}">Overview of Data Structures</a></li>
+		<li><a href="{{ url_for("show_topic", day="day-one", topic="key-schemas-and-orm") }}">Key Schemas &amp; ORMs</a></li>
+	</ul>
+	<h3>Afternoon</h3>
+	<ul>
+		<li><a href="{{ url_for("show_topic", day="day-one", topic="master-slave-replication") }}">Master-Slave Replication</a></li>
+		<li><a href="{{ url_for("show_topic", day="day-one", topic="intro-redis-cluster") }}">Introduction to Redis Cluster</a></li>
+	</ul>
+{% endblock %}

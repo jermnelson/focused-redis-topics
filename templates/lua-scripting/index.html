@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="row">
+ <div class="col-md-10">
+  <section class="row">
+   <div class="col-md-4"><a href="http://www.lua.org/"><img class="img-thumbnail" src="http://www.lua.org/images/lua.gif"></a></div>
+   <div class="col-md-8"><h1>Lua Scripting</h1>
+  <p class="lead">Since Redis version 2.6, a <a href="http://www.lua.org/">Lua</a>
+  interpreter has been embedded into the Redis server. With Lua, a high-level programming
+  language, functions and business-logic can be run directly in Redis for improved 
+  application performance.</p></div>
+  </section>
+ </div>
+<div class="col-md-2">
+    <div class="panel panel-danger">
+     <div class="panel-body">
+     <h4>In this topic &hellip;</h4>
+     <li><a href="#E1">Introducing Lua</a></li>
+     <li><a href="#E2">First Lua Script</a></li>
+     {#<h4>Labs</h3>
+     <li><a href="#lab1">Elf Kanban 4 Toys</a></li>
+     <li><a href="#lab2">Santa Naughty-or-Nice Dashboard</a></li>
+     <h4><a href="#references"><strong>References</strong></a></h4>#}
+     </ul>
+     </div>
+    </div>
+ </div>
+</div>
+<hr>
+<div class="row">
+ <div class="col-md-8">
+   {# START Exercise  #}
+   <div class="panel panel-warning">
+    <div class="panel-heading">
+      <h3 class="panel-title">Introducing Lua</h3>
+    </div>
+    <div class="panel-body">
+     <p>
+       Lua stores data in variables, that are declared and initialized by 
+       specifying the variable name and using the assignment operator (<strong>=</strong>) to
+       assign a value. Lua core datatypes are nil (null), number (combines both int and float),
+       boolean, and strings.
+     </p>
+     <pre>
+> x = 5
+> x
+5
+> blank = nil
+> blank
+nil
+> is_true, is_false = true, false
+> is_true
+true
+> is_false
+false
+> message = "Redis with Lua is cool."
+> message
+Redis with Lua is cool.
+>
+    </pre>
+    <p>
+      A table in Lua is similar to the hash type in Redis, where a unique set of keys 
+      are mapped to a set of values. To retrieve a value from a table by key, either use
+      square brackets <strong>[]</strong> or use the  <strong>.</strong> operator if the 
+      key is a valid Lua identifier.
+    </p>
+    <pre>
+> table1 = {}
+> table1[1] = "The first value in table1"
+> table1["second"] = "The second value in table1"
+> table1
+table: 0000000000620900
+> table1[1]
+The first value in table1
+> table1.second
+The second value in table1
+>
+   </pre>
+     
+   <p>The standard mathematical operations are <span class="label label-default">multiplication  *</span>,
+     <span class="label label-default">division  /</span>, <span class="label label-default">addition  +</span>,
+     <span class="label label-default">subtraction -</span>.
+   </p>
+   <pre>
+> 3*5
+15
+> 12/2
+6.0
+> 896-785
+111
+> 129+745
+874
+> (2+3) * 5
+25
+>
+   </pre>
+   <p>
+     Lua strings can concatenated using two periods;  <span class="label label-default">..</span>. To create a Lua
+     multi-line string without any character escaping, use double square brackets at the beginning  
+     <span class="label label-default">[[</span> and at the end <span class="label label-default">]]</span>.
+    </p>
+   <pre>
+> message = "Redis is SOOO fast"
+> message
+Redis is SOOO fast
+> readme = [[The way to a good a project is
+>> good documentation and plenty of coffee]]
+> readme
+The way to a good a project is
+good documentation and plenty of coffee
+>
+   </pre>
+    <p>Lua has the standard if/then conditional branching as well as various looping structures
+      for tables. The <span class="label label-default">do while</span> and 
+      <span class="label label-default">repeat until</span> are similar looping structures with
+     main difference being that the <span class="label label-default">repeat until</span> will
+     execute at least once per loop. Lua has two types of <span class="label label-default">for</span>
+     loops; the first takes a start value, end value, and increment while the second 
+     <span class="label label-default">for</span> type takes an iterator over a table and iterates
+     through each key-value pair in the table.
+    </p>
+    <pre>
+> x = 3.14
+> if x > 10 then
+>>    print("X is greater than 10")
+>> elseif x == 2 then
+>>    print("X is 2")
+>> else
+>>    print("X is "..x)
+>> end
+X is 3.14
+>
+> table2 = {20, 5, 60}
+> sum, counter = 0, 1
+> #table2
+3
+> while counter <= #table2 do
+>>     sum = sum + table2[counter]
+>>     counter = counter + 1
+>> end
+> print("The sum is ", sum)
+The sum is      85
+> sum, counter = 0, 1
+> repeat
+>>     sum = sum + table2[counter]
+>>     counter = counter + 1
+>> until counter > #table2
+> print("The sum is: ", sum)
+The sum is:     85
+> sum = 0
+> for counter = 1, #table2, 1 do
+>>     sum = sum + table2[counter]
+>> end
+> print("The sum is: ", sum)
+The sum is:     85
+> for counter, num in ipairs(table2) do
+>>     sum = sum + num
+>> end
+> print("The sum is: ", sum)
+The sum is:     170
+>
+    </pre> 
+    <p> 
+     To create a function in Lua, use the <span class="label label-default">function</span> keyword.
+    </p>
+    <pre>
+> crazy_eight = function(a_table)
+>>     sum = 0
+>>     for counter =1, #a_table, 1 do
+>>         sum = sum + a_table[counter]*8
+>>     end
+>>     return sum
+>> end
+> crazy_eight(table2)
+680
+    </pre>
+   </div>
+  </div>
+ </div>
+ <div class="col-md-4">
+  <h3>Commands for <em>Lua</em> Scripting</h3>
+   <ul class="list-group">
+    <li class="list-group-item list-group-item-success">
+     <strong><a href="http://redis.io/commands/eval">EVAL</a> <em>numkeys</em> <em>key</em> <em>[key ...]</em> <em>arg</em> 
+      <em>[arg &hellip;]</em></strong>
+    </li>
+    <li class="list-group-item">
+     <strong> <a href="http://redis.io/commands/evalsha">EVALSHA</a> <em>sha1</em> <em>numkeys</em> <em>key</em> 
+      [key &hellip;]</em> arg </em>[arg ...]</em></strong>
+    </li>
+   </ul>
+  </div>
+</div>
+<hr>
+<div class="row">
+ <div class="col-md-12">
+   {# START Exercise  #}
+   <div class="panel panel-warning">
+    <div class="panel-heading">
+      <h3 class="panel-title"><a name="E1"></a>Exercise: First Lua Script</h3>
+    </div>
+    <div class="panel-body">
+     <p>
+      Lua scripts can be run using the <span class="label label-success">EVAL</span> and 
+      <span class="label label-success">EVALSHA</span> commands. Within the Lua script,
+      Redis commands can be run using the <code>redis.call</code> and <code>redis.pcall</code>
+      Lua functions. The difference between the two is that if an error occurs evaluating
+      the <code>redis.pcall</code>, Lua will capture and return the error while 
+      <code>redis.call</code> will raise a Lua error and the 
+      <span class="label label-success">EVAL</span> command will also return an error.
+     </p>
+     <pre>
+127.0.0.1:6379> EVAL "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" 2 Book:1 Book:2 "War and Peace" "Critique of Pure Reason"
+1) "Book:1"
+2) "Book:2"
+3) "War and Peace"
+4) "Critique of Pure Reason"
+127.0.0.1:6379> EVAL "return redis.call('SET', 'Book:1', 'War and Peace')" 0
+OK
+127.0.0.1:6379> GET Book:1
+"War and Peace"
+     </pre>
+     <p>The <span class="label label-success">EVALSHA</span> command's first argument it is
+      the SHA1 digest script instead of the script itself. Use the  
+      <span class="label label-success">SCRIPT LOAD</span> command to load script first and then
+      use the resulting SHA1 to run script on the server 
+    </div>
+    <pre>
+127.0.0.1:6379> SCRIPT LOAD "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}"
+"a42059b356c875f0717db19a51f6aaca9ae659ea"
+127.0.0.1:6379> EVALSHA a42059b356c875f0717db19a51f6aaca9ae659ea 2 Book:1 Book:2 "War and Peace" "Critique of Pure Reason"
+1) "Book:1"
+2) "Book:2"
+3) "War and Peace"
+4) "Critique of Pure Reason"
+    </pre>
+   {# END Exercise #}
+   </div>
+ </div>
+</div>
+{# import 'snippets/labs.html' as labs %}
+<h1>Lab Assignment</h1>
+<div class="row">
+  <div class="col-md-6 well well-sm"><a name="lab1"></a>
+   {% set kanban = 'Implement one or more Lua scripts for the following functions in the Kanban workflow:' %}
+  {{ labs.lab('Elf Kanban 4 Toys', 'img/toy64.png', kanban) }}  
+  </div>
+  <div class="col-md-6 well well-sm"><a name="lab2"></a>
+   {% set dashboard = 'Implement one or more Lua scripts for the following functionality in the 
+Naughty-or-Nice Dashboard:<ul><li>Adding child to the naughty or nice lists</li>
+<li>Moving a child from one list to another</li></ul>' %}
+  {{ labs.lab("Santa's Naughty-or-Nice Dashboard", 'img/list64.png', dashboard) }} 
+  </div>
+</div>#}
+<hr>
+
+<hr>
+<div class="row">
+ <h2>References and Resources</h2>
+  <ol>
+    <li>From the redis.io website: topic on
+     <a href="http://redis.io/commands/eval">EVAL</a>
+   </li>
+   <li>Lua Language 
+     <a href="http://www.lua.org/">homepage</a></li>
+  </ol>
+</div>
+{% endblock %}

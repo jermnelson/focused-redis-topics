@@ -1,23 +1,23 @@
 <nav class="navbar navbar-light bg-faded">
 <a class="navbar-brand" href="{{ url_for('home') }}">Course Website</a>
   <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Overview <span class="sr-only">(current)</span></a>
+		  <li class="nav-item {% if request.path == "/" %}active{% endif %}">
+		  <a class="nav-link" href="{{ url_for("home") }}">Overview <span class="sr-only">(current)</span></a>
+    </li>
+	<li class="nav-item{% if request.path.startswith("/day-one") %} active{% endif %}">
+	<a class="nav-link" href="{{ url_for("show_topic", day="day-one") }}">Day 1</a>
+    </li>
+    <li class="nav-item{% if request.path.startswith("/day-two") %} active{% endif %} ">
+	<a class="nav-link" href="{{ url_for("show_topic", day="day-two") }}">Day 2</a>
+    </li>
+    <li class="nav-item{% if request.path.startswith("/day-three") %} active{% endif %}">
+	<a class="nav-link" href="{{ url_for("show_topic", day="day-three") }}">Day 3</a>
     </li>
     <li class="nav-item">
-	<a class="nav-link" href="">Day 1</a>
+	<a class="nav-link" href="{{ url_for('badge') }}">Open Badge</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Day 2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Day 3</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Open Badge</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Help &amp; Downloads</a>
+	<a class="nav-link" href="{{ url_for('help_and_downloads') }}">Help &amp; Downloads</a>
     </li>
 
   </ul>
