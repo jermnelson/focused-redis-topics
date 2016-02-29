@@ -2,31 +2,28 @@
 
 {% block slider %}
  <div class="btn-group pull-right">
-  <a href="{{ url_for("show_topic", day="day-three", topic="caching-keyspace-notifications") }}" 
+  <a href="{{ url_for("show_topic", day="day-three", topic="latency") }}" 
       class="btn btn-secondary btn-default btn-sm"><i class="fa fa-play fa-rotate-180"></i></a>
-  <a href="{{ url_for("show_topic", day="day-three", topic="related-messenging") }}"
-      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-play"></i></a>
+  <a href="{{ url_for("home") }}"
+      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-home"></i></a>
  </div>
 {% endblock %}
 
 
 {% block main %}
 <h3>Focused Topics in Redis Day 3</h3>
-<h1>Troubleshooting Redis Latency</h1>
+<h1>Related Messaging Technologies</h1>
 <div class="row">
-    <section class="col-md-8">
-    </section>
-
     <section class="col-md-4">
-    <div class="card card-inverse card-warning">
+    <div class="card card-inverse card-success">
      <div class="card-block">
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
-          <h4>Sources</h4>
-          <li><a href="#network">Network</a></li>
+          <h4>Discus</h4>
+          <li><a href="#discus">Discus</a></li>
           <li><a href="#memory">Memory</a></li>
           <li><a href="#">LRU Configuration</a></li>
-          <h4>Tools</h4>
+          <h4>Twemproxy</h4>
           <li><a href="#latency-doctor">Latency Doctor</a></li>
           <h4>Use Cases</h4>
           <li><a href="#ldfs">Linked Data Fragments Server</a></li>
@@ -34,8 +31,16 @@
      </div>
     </div>
     </section>
+    <section class="col-md-8">
+        <p class="lead">
+            Redis-related Messaging Technologies like Twitter's Twemproxy and
+            Salvidore's own <a href="#discue">Discue</a> provide alternative 
+            ways for implementing a messaging framework based on Redis.
+        </p>
+    </section>
+
 </div>
 <hr>
 <a id="ldfs"></a>
-{% include 'latency/ldfs.html' %}
+{% include 'related-messenging/ldfs.html' %}
 {% endblock %}

@@ -3,17 +3,19 @@
 {% block slider %}
  <div class="btn-group pull-right">
   <a href="{{ url_for("show_topic", day="day-one", topic="security") }}" 
-      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-caret-square-o-left"></i></a>
-  <a href="#" onclick="alert('Need day 2 topic')"
-      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-caret-square-o-right"></i></a>
+      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-play fa-rotate-180"></i></a>
+  <a href="{{ url_for("show_topic", day="day-one", topic="caching-keyspace-notifications") }}"
+      class="btn btn-secondary btn-info btn-sm"><span class="label label-pill label-default">Day 3</span>
+   <i class="fa fa-play"></i> 
+  </a>
  </div>
 {% endblock %}
 
 {% block main %}
 <div class="row">
- <div class="col-md-10">
+ <div class="col-md-8">
   <section class="row">
-   <div class="col-md-4"><a href="http://www.lua.org/"><img class="img-thumbnail" src="http://www.lua.org/images/lua.gif"></a></div>
+   <div class="col-md-3"><a href="http://www.lua.org/"><img class="img-thumbnail" src="http://www.lua.org/images/lua.gif"></a></div>
    <div class="col-md-8">
    <h3>Focused Topics in Redis Day 2</h3>
    <h1>Lua Scripting</h1>
@@ -22,21 +24,25 @@
   language, functions and business-logic can be run directly in Redis for improved 
   application performance.</p></div>
   </section>
- </div>
-<div class="col-md-2">
-    <div class="panel panel-danger">
-     <div class="panel-body">
-     <h4>In this topic &hellip;</h4>
-     <li><a href="#E1">Introducing Lua</a></li>
-     <li><a href="#E2">First Lua Script</a></li>
-     {#<h4>Labs</h3>
-     <li><a href="#lab1">Elf Kanban 4 Toys</a></li>
-     <li><a href="#lab2">Santa Naughty-or-Nice Dashboard</a></li>
-     <h4><a href="#references"><strong>References</strong></a></h4>#}
-     </ul>
+</div>
+<div class="col-md-4">
+    <div class="card card-inverse card-warning">
+     <div class="card-block">
+       <h3 class="card-title">In this topic &hellip;</h3>
+       <ul>
+          <h4>About Lua</h4>
+          <li><a href="#E1">Introducing Lua</a></li>
+          <li><a href="#E2">First Lua Script</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <h4>Server-side Scipting</h4>
+          <li><a href="#keyspace-notify">Overview</a></li>
+          <li><a href="#keyspace-notify-options">Options</a></li>
+          <h4>Use Cases</h4>
+          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+       </ul>
      </div>
     </div>
- </div>
+</div>
 </div>
 <hr>
 <div class="row">
@@ -277,4 +283,7 @@ Naughty-or-Nice Dashboard:<ul><li>Adding child to the naughty or nice lists</li>
      <a href="http://www.lua.org/">homepage</a></li>
   </ol>
 </div>
+<hr>
+<a id="ldfs"></a>
+{% include 'lua-scripting/ldfs.html' %}
 {% endblock %}

@@ -5,11 +5,12 @@
 <h1>Focused Topics on Redis: Day 2</h1>
 <h3>Morning</h3>
 	<ul>
+        <li><a href="{{ url_for('show_topic', day="day-two", topic='pubsub') }}">Pub/Sub</a></li>
         <li><a href="{{ url_for('show_topic', day="day-two", topic='ha-redis-sentinel') }}">High Availablity w/Redis Sentinel</a></li>
-        <li><a href="{{ url_for('show_topic', day="day-two", topic='security') }}">Security</a></li>
-	</ul>
+        </ul>
 	<h3>Afternoon</h3>
 	<ul>
+        <li><a href="{{ url_for('show_topic', day="day-two", topic='security') }}">Security</a></li>
         <li><a href="{{ url_for('show_topic', day="day-two", topic='lua-scripting') }}">Lua Scripting</a></li>
 	</ul>
 {% endblock %}

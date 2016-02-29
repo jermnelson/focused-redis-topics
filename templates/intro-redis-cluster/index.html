@@ -3,15 +3,38 @@
 {% block slider %}
  <div class="btn-group pull-right">
   <a href="{{ url_for("show_topic", day="day-one", topic="master-slave-replication") }}" 
-      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-caret-square-o-left"></i></a>
-  <a href="{{ url_for("show_topic", day="day-two", topic="ha-redis-sentinel" ) }}"
-      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-caret-square-o-right"></i></a>
+      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-play fa-rotate-180"></i></a>
+  <a href="{{ url_for("show_topic", day="day-two", topic="pubsub" ) }}"
+      class="btn btn-secondary btn-info btn-sm"><span class="label label-pill label-default">Day 2</span>
+    <i class="fa fa-play"></i> 
+  </a>
  </div>
 {% endblock %}
 
 {% block main %}
 <h3>Focused Topics in Redis Day 1</h3>
 <h1>Introduction to Redis Cluster</h1>
+<div class="row">
+    <section class="col-md-4">
+    <div class="card">
+     <div class="card-block">
+       <h3 class="card-title">In this topic &hellip;</h3>
+       <ul>
+          <h4>Starting Cluster</h4>
+          <li><a href="#create-cluster">Create Cluster</a></li>
+          <li><a href="#manual-creation">Manually</a></li>
+          <h4>Redis Client Support</h4>
+          <li><a href="#redis-cli">Redis CLI</a></li>
+          <li><a href="#ruby">Ruby - <em>redis-rb-cluster</em></a></li>
+          <li><a href="#python">Python-based</a></li>
+          <h4>Use Cases</h4>
+          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+       </ul>
+     </div>
+    </div>
+    </section>
+</div>
+
 <hr>
 {% include 'master-slave-replication/ldfs.html' %}
 {% endblock %}

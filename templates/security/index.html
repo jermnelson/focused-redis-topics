@@ -3,9 +3,9 @@
 {% block slider %}
  <div class="btn-group pull-right">
   <a href="{{ url_for("show_topic", day="day-one", topic="ha-redis-sentinel") }}" 
-      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-caret-square-o-left"></i></a>
+      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-play fa-rotate-180"></i></a>
   <a href="{{ url_for("show_topic", day="day-two", topic="lua-scripting" ) }}"
-      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-caret-square-o-right"></i></a>
+      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-play"></i></a>
  </div>
 {% endblock %}
 
@@ -14,8 +14,23 @@
 		<section class="col-md-8">
 		<h3>Focused Topics in Redis Day 2</h3>
 		<h1>Security</h1>
-      
 		</section>
+    <section class="col-md-4">
+    <div class="card card-inverse card-warning">
+     <div class="card-block">
+       <h3 class="card-title">In this topic &hellip;</h3>
+       <ul>
+          <h4>Overview</h4>
+          <li><a href="#default">Default</a></li>
+          <li><a href="#master-slave">Master-Slave Replication</a></li>
+          <li><a href="#cluster">Cluster</a></li>
+          <li><a href="#high-availability">High Availability</a></li>
+          <h4>Use Cases</h4>
+          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+       </ul>
+     </div>
+    </div>
+    </section>
 </div>
 <hr>
 {% include "security/default.html" %}

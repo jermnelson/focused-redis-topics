@@ -25,17 +25,24 @@
 		<h2>Day 2 <sup><a href="{{ url_for('show_topic', day="day-two") }}" style="font-size: .70em">
 		<i class="fa fa-info-circle fa-sm"></i></a></sup></h2>
 		<ul>
-            <li><a href="{{ url_for('show_topic', day="day-two", topic='ha-redis-sentinel') }}">High Availablity w/Redis Sentinel</a></li>
-			<li><a href="{{ url_for('show_topic', day="day-two", topic='security') }}">Security</a></li>
+    <li><a href="{{ url_for('show_topic', day="day-two", topic='pubsub') }}">Pub/Sub Messaging</a></li>
+    <li><a href="{{ url_for('show_topic', day="day-two", topic='ha-redis-sentinel') }}">High Availablity w/Redis Sentinel</a></li>
+    <li><a href="{{ url_for('show_topic', day="day-two", topic='security') }}">Security</a></li>
             <li><a href="{{ url_for('show_topic', day="day-two", topic='lua-scripting') }}">Lua Scripting</a></li>
-
+    
 		</ul>
 
-		<h2>Day 3 <sup><a href="{{ url_for('show_topic', day="day-three") }}" style="font-size: .70em"><i class="fa fa-info-circle fa-sm"></i></a></sup>
-		</h2>
-		<ul>
-			<li><a href="{{ url_for("show_topic", day="day-three", topic="latency") }}">Trouble-shooting Redis Latency</a></li>
-		</ul>
+<h2>
+ Day 3 <sup><a href="{{ url_for('show_topic', day="day-three") }}" style="font-size: .70em"><i class="fa fa-info-circle fa-sm"></i></a></sup>
+</h2>
+    <ul>
+        <li><a href="{{ url_for("show_topic", day="day-three", topic="caching-keyspace-notifications") }}">
+         Caching and Keyspace Notifications</a></li>
+        <li><a href="{{ url_for("show_topic", day="day-three", topic="latency") }}">Trouble-shooting Redis Latency</a></li>
+        <li>
+            <a href="{{ url_for("show_topic", day="day-three", topic="related-messenging") }}">Related Messaging Technologies</a>
+        </li>
+    </ul>
 
 </section>
 </div>

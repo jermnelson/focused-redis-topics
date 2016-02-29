@@ -2,25 +2,28 @@
 
 {% block slider %}
  <div class="btn-group pull-right">
-  <a href="{{ url_for("show_topic", day="day-two", topic="pubsub") }}" 
+  <a href="{{ url_for("show_topic", day="day-two", topic="lua-scripting") }}" 
       class="btn btn-secondary btn-default btn-sm"><i class="fa fa-play fa-rotate-180"></i></a>
-  <a href="{{ url_for("show_topic", day="day-two", topic="security" ) }}"
+  <a href="{{ url_for("show_topic", day="day-three", topic="latency" ) }}"
       class="btn btn-secondary btn-info btn-sm"><i class="fa fa-play"></i></a>
+
  </div>
 {% endblock %}
 
 {% block main %}
-<h3>Focused Topics in Redis Day 2</h3>
-<h1>High Availability with Redis Sentinel</h1>
+<h3>Focused Topics in Redis Day 3</h3>
+<h1>Caching &amp; Keyspace Notifications</h1>
 <div class="row">
     <section class="col-md-4">
-    <div class="card card-inverse card-warning">
+    <div class="card card-inverse card-danger">
      <div class="card-block">
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
-          <h4>Sentinel Commands</h4>
-          <li><a href="#commands">Commands</a></li>
-          <h4>Configuration</h4>
+          <h4>Redis Cache</h4>
+          <li><a href="#expire">Default Expiration</a></li>
+          <li><a href="#lru-options">LRU Options</a></li>
+          <li><a href="#lru-configuration">LRU Configuration</a></li>
+          <h4>Keyspace Notifications through PUB/SUB</h4>
           <li><a href="#keyspace-notify">Overview</a></li>
           <li><a href="#keyspace-notify-options">Options</a></li>
           <h4>Use Cases</h4>
