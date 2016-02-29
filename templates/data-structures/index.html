@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
+{% block slider %}
+ <div class="btn-group pull-right">
+   <a href="{{ url_for("show_topic", day="day-one") }}"
+      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-home"></i></a>
+   <a href="{{ url_for("show_topic", day="day-one", topic="key-schemas-and-orm") }}" 
+      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-caret-square-o-right"></i></a>
+ </div>
+{% endblock %}
+
 {% block main %}
 <div class="row">
  <div class="col-md-9">
+  <h3>Focused Topics in Redis Day 1</h3>
   <h1>Redis data types</h1>
   <p class="lead">
    A real strength of Redis is its powerful data structures that can be used
@@ -38,9 +48,8 @@
      <li><a href="#E6">Using <em>Sorted Set</em> data type</a></li>
      <li><a href="#E7">Using <em>Bitmap</em> data type</a></li>
      <li><a href="#E*">Using <em>HyperLogLogs</em> data type</a></li>
-     <h4>Labs</h3>
-      <li><a href="#lab1">Santa's Naughty-or-Nice Dashboard</a></li>
-      <li><a href="#lab2">Elf Kanban 4 Toys</a></li>
+     <h4>Use Cases</h4>
+     <li><a href="#ldfs">Linked Data Fragment Server</a></li>
      <h4><a href="#reference">References and Resources</a></h4>
    </div>
   </div>
@@ -1015,6 +1024,8 @@ OK
   </div>
 </div>
 #}
+<a href="#" id="ldfs"></a>
+{% include 'data-structures/ldfs.html' %}
 <hr>
 <div class="row">
  <h2><a name="reference"></a>References and Resources</h2>

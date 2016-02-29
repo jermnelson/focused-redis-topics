@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 
+{% block slider %}
+ <div class="btn-group pull-right">
+  <a href="{{ url_for("show_topic", day="day-one", topic="security") }}" 
+      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-caret-square-o-left"></i></a>
+  <a href="#" onclick="alert('Need day 2 topic')"
+      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-caret-square-o-right"></i></a>
+ </div>
+{% endblock %}
+
 {% block main %}
 <div class="row">
  <div class="col-md-10">
   <section class="row">
    <div class="col-md-4"><a href="http://www.lua.org/"><img class="img-thumbnail" src="http://www.lua.org/images/lua.gif"></a></div>
-   <div class="col-md-8"><h1>Lua Scripting</h1>
+   <div class="col-md-8">
+   <h3>Focused Topics in Redis Day 2</h3>
+   <h1>Lua Scripting</h1>
   <p class="lead">Since Redis version 2.6, a <a href="http://www.lua.org/">Lua</a>
   interpreter has been embedded into the Redis server. With Lua, a high-level programming
   language, functions and business-logic can be run directly in Redis for improved 

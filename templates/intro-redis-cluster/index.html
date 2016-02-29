@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block slider %}
+ <div class="btn-group pull-right">
+  <a href="{{ url_for("show_topic", day="day-one", topic="master-slave-replication") }}" 
+      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-caret-square-o-left"></i></a>
+  <a href="{{ url_for("show_topic", day="day-two", topic="ha-redis-sentinel" ) }}"
+      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-caret-square-o-right"></i></a>
+ </div>
+{% endblock %}
+
+{% block main %}
+<h3>Focused Topics in Redis Day 1</h3>
+<h1>Introduction to Redis Cluster</h1>
+<hr>
+{% include 'master-slave-replication/ldfs.html' %}
+{% endblock %}

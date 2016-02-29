@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
+{% block slider %}
+ <div class="btn-group pull-right">
+  <a href="{{ url_for("show_topic", day="day-one", topic="ha-redis-sentinel") }}" 
+      class="btn btn-secondary btn-default btn-sm"><i class="fa fa-caret-square-o-left"></i></a>
+  <a href="{{ url_for("show_topic", day="day-two", topic="lua-scripting" ) }}"
+      class="btn btn-secondary btn-info btn-sm"><i class="fa fa-caret-square-o-right"></i></a>
+ </div>
+{% endblock %}
 
 {% block main %}
 <div class="row">
@@ -18,4 +26,5 @@
 <hr>
 {% include "security/high-availability.html" %}
 <hr>
+{% include 'master-slave-replication/ldfs.html' %}
 {% endblock %}
