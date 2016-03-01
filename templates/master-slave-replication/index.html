@@ -14,5 +14,29 @@
 <h3>Focused Topics in Redis Day 1</h3>
 <h1>Master-Slave Replication</h1>
 <hr>
+<div class="row">
+    <section class="col-md-8">
+     <p class="lead">
+       Redis replication is based on master Redis instances that have their contents
+       mirrored with one or more Redis slave instances.
+     </p>
+    </section>
+    <section class="col-md-4">
+    <div class="card card-inverse card-warning">
+     <div class="card-block">
+       <h3 class="card-title">In this topic &hellip;</h3>
+       <ul>
+          <h4>Master-Slave Commands</h4>
+          <li><a href="#commands">Commands</a></li>
+          <h4>Configuration</h4>
+          <li><a href="#keyspace-notify">Overview</a></li>
+          <li><a href="#keyspace-notify-options">Options</a></li>
+          <h4>Use Cases</h4>
+          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+       </ul>
+     </div>
+    </div>
+    </section>
+</div>
 {% include 'master-slave-replication/ldfs.html' %}
 {% endblock %}
