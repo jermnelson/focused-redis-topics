@@ -1,7 +1,7 @@
 <h2>Use Case: <em>Linked Data Fragments Server</em></h2>
 <div class="row">
   <section class="col-md-4">
-   <h3>Fast Overview of Linked Data</h3>
+   <h3>Overview of Linked Data</h3>
    <p class="lead">
      Based upon <a href="#">Sir Tim Berners-Lee</a> idea of the Semantic
      Web, libraries are adopting various RDF graph-based vocabularies to 
@@ -28,11 +28,76 @@
    <div class="card">
     <article class="card-block">
       <h4 class="card-title">Data structure evolution</h4>
-      <p class="lead">During the development of the Linked Data Fragments Server, the 
+      <p class="lead card-text">During the development of the Linked Data Fragments Server, the 
       variety and types of Redis data-structures that were used changed as further 
-      design, development, and testing continued in the project.</p>  
+      design, development, and testing continued in the project.</p> 
+    </article>
+   </div>
+   <div class="card ">
+    <article class="card-block">
+      <h4 class="card-title bg-danger">Redis Strings</h4>
+      <p class="card-text">
+          The initial schema design for the Linked Data Fragments Server was to generate a 
+          SHA1 hash digest for each subject, predicate, and object and then storing a simple
+          composite key made up of the triple. 
+      </p>
     </article>
    </div>
   </section>
  </div>
 </div>
+<div class="card-deck-wrapper m-b-1">
+     <div class="card-deck">
+         <div class="card">
+             <div class="card-block">
+                 <h4 class="bg-primary card-title" colspan="2">Subject</h4>
+                 <p class="card-text">
+                 <span class="label label-default">URL:</span> 
+                 http://www.denverbroncos.com/
+                 </p>
+                 <p class="card-text">
+                 <span class="label label-default">SHA1 Hash digest:</span> 
+                 e61da38f50b68b932ddcde7d3ec6de5baddba0e9
+                 </p>
+             </div>
+         </div>
+         <div class="card">
+             <div class="card-block">
+                 <h4 class="card-title bg-warning">Predicate</h4>
+                 <p class="card-text">
+                     <span class="label label-default">URL:</span> 
+                     https://schema.org/name
+                 </p>
+                 <p class="card-text">
+                     <span class="label label-default">SHA1 Hash digest:</span> 
+                     4dab97eaa98fcba6bd7a204da2fea672e51f6a84
+                 </p>
+             </div>
+         </div> 
+         <div class="card">
+             <div class="card-block">
+                 <h4 class="card-title bg-success">Object</h4>
+                 <p class="card-text">
+                     <span class="label label-default">Literal Value:</span> 
+                     Denver Broncos
+                 </p>
+                 <p class="card-text">
+                     <span class="label label-default">SHA1 Hash digest:</span> 
+                     0a84cadbc87cbca90ddf0f90e4af57d6f0753335
+                 </p>
+             </div>
+         </div>
+     </div>
+ </div>
+<code>
+<pre style="font-size: 1em">
+127.0.0.1:6379> SETNX e61da38f50b68b932ddcde7d3ec6de5baddba0e9 http://www.denverbroncos.com/
+(integer) 1
+127.0.0.1:6379> SETNX 4dab97eaa98fcba6bd7a204da2fea672e51f6a84 https://schema.org/name
+(integer) 1
+127.0.0.1:6379> SETNX 0a84cadbc87cbca90ddf0f90e4af57d6f0753335 "Denver Broncos"
+(integer) 1
+127.0.0.1:6379> SETNX e61da38f50b68b932ddcde7d3ec6de5baddba0e9:4dab97eaa98fcba6bd7a204da2fea672e51f6a84:0a84cadbc87cbca90ddf0f90e4af57d6f0753335 1
+(integer) 1
+</pre>
+</code>

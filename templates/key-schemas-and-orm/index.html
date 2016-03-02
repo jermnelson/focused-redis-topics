@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main %}
- <h3>Focused Topics in Redis Day 1</h3>
+ <h3>Focused Redis Topic #2 - Day 1</h3>
  <h1>Key Schemas and Object Relational Managers</h1>
  <div class="row">
   <section class="col-md-4">
@@ -25,6 +25,8 @@
           <li><a href="#node">Node.js ORMs</a></li>
           <li><a href="#python">Python-based ORMs</a></li>
           <li><a href="#ruby">Ruby-based ORMs</a></li>
+          <h4>Exercises</h4>
+          <li><a href="#E1">Using MONITOR mode</a></li>
           <h4>Use Cases</h4>
           <li><a href="#ldfs">Linked Data Fragments Server</a></li>
        </ul>
@@ -52,6 +54,9 @@
  <hr>
  <a id="node"></a>
  {% include 'key-schemas-and-orm/node.html' %}
+ <a id="E1"></a>
+ {% include 'key-schemas-and-orm/exercise-1.html' %}
+
  <hr>
   <a id="python"></a>
   {% include 'key-schemas-and-orm/python.html' %} 
