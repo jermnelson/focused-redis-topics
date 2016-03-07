@@ -1,8 +1,33 @@
+<h2 class="text-xs-center">Six-Node Redis Cluster</h2>
 <div class="row">
-    <section class="col-md-6">
+    <section class="col-md-7">
        <img src="{{ url_for('static', filename='img/six-node-redis-cluster.png') }}">
     </section> 
-    <section class="col-md-6">
-        <h3>Six-Node Redis Cluster</h3>
+    <section class="col-md-5">
+        <p>To illustrate all of the features of Redis Cluster, the minimum recommended
+        Redis cluster setup is to have a 3 Master Redis nodes with each master node replicated with a 
+        single Redis slave instance node. Each Master Node hash slots are broken down as</p> 
+        <div class="alert alert-danger">
+            <strong>Master One (M1)</strong> - allocated hash slots 0-5460
+        </div>
+        <div class="alert alert-info">
+            <strong>Slave One (S1)</strong> replicates Master One, is promoted if a quorum of 
+            nodes cannot reach Master One.
+        </div>
+        <div class="alert alert-danger">
+            <strong>Master Two (M2)</strong> - allocated hash slots 5461-10922
+        </div>
+        <div class="alert alert-info">
+            <strong>Slave Two (S2)</strong> replicates Master Two, is promoted if a quorum of 
+            nodes cannot reach Master Two.
+        </div>
+        <div class="alert alert-danger">
+            <strong>Master Three (M3)</strong> - allocated hash slots 10923-16383
+        </div>
+        <div class="alert alert-info">
+            <strong>Slave Three (S3)</strong> replicates Master Three, is promoted if a quorum of 
+            nodes cannot reach Master Three.
+        </div>
+
     </section> 
 </div>

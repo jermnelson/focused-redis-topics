@@ -20,23 +20,56 @@
        Redis replication is based on master Redis instances that have their contents
        mirrored with one or more Redis slave instances.
      </p>
+       <h3>Facts about Master-Slave Replication</h3>
+       <ul>
+        <li>Master and Slaves use asynchronous replication</li> 
+        <li>Masters can have multiple slaves (1-N)</li> 
+        <li>Slaves can accept connections from other slaves (i.e. a slave could have as it's master a Redis instance that is slave to a master instance)</li>  
+        <li>Replication is non-blocking on both master and slave instances; a master can continue to respond to queries while slaves are 
+        synchronizing, a slave can be configured to respond to queries with old data while synchronizing with the master</li>
+       </ul>
     </section>
     <section class="col-md-4">
     <div class="card card-inverse card-warning">
      <div class="card-block">
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
-          <h4>Master-Slave Commands</h4>
-          <li><a href="#commands">Commands</a></li>
-          <h4>Configuration</h4>
-          <li><a href="#keyspace-notify">Overview</a></li>
-          <li><a href="#keyspace-notify-options">Options</a></li>
-          <h4>Use Cases</h4>
-          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+            <h4>Overview</h4>
+            <li><a href="#basic-replication">Basic Replication</a></li>
+            <li><a href="#partial-resync">Partial Resynchronization</a></li>
+            <li><a href="#diskless">Diskless Replication</a></li>
+            <li><a href="#commands">Commands</a></li>
+            <li><a href="#cavets">Cavets</a></li>
+            <h4>Configuration</h4>
+            <li><a href="#runtime-config">Runtime</a></li>
+            <li><a href="#redis-conf">With <code>redis.conf</code></a></li>
+            <h4>Use Cases</h4>
+            <li><a href="#ldfs">Linked Data Fragments Server</a></li>
        </ul>
      </div>
     </div>
     </section>
 </div>
+<a id="basic-replication"></a>
+{% include 'master-slave-replication/basic-replication.html' %}
+<hr>
+<a id="partial-resync"></a>
+{% include 'master-slave-replication/partial-resynchronization.html' %}
+<hr>
+<a id="diskless"></a>
+{% include 'master-slave-replication/diskless.html' %}
+<hr>
+<a id="commands"></a>
+{% include 'master-slave-replication/commands.html' %}
+<hr>
+<a id="cavets"></a>
+{% include 'master-slave-replication/cavets.html' %}
+<hr>
+<a id="runtime-config"></a>
+{% include 'master-slave-replication/runtime-config.html' %}
+<hr>
+<a id="redis-conf"></a>
+{% include 'master-slave-replication/redis-conf.html' %}
+<hr>
 {% include 'master-slave-replication/ldfs.html' %}
 {% endblock %}

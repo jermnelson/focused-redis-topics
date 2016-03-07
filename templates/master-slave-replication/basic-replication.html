@@ -1,0 +1,65 @@
+<h2>Basic Replication</h2>
+<p class="lead">To illustrate the basic operations of using Redis replication, we 
+will start-up two running Redis instances and two <code>redis-cli</code> sessions
+connecting to the two instances.</p>
+<p>Open a terminal session and for this example we will use the unix <code>screen</code>
+    utility to run all of our sessions. If you don't have <code>screen</code> installed, 
+    you can open four individual terminal sessions.</p>
+<div class="row">
+   <section class="col-md-6">
+       <h3>Redis Master</h3>
+    <pre>
+$ ~/redis/src/redis-server --dbfilename master.rdb --port 6379
+   </pre>
+    <h4>Redis CLI session of <strong>Redis Master</strong></h4>
+       <pre>
+$ ~/redis/src/redis-cli -p 6379
+127.0.0.1:6379> DBSIZE
+(integer) 0
+       </pre>
+    <p>Next, we will add some field-values to a Redis hash key in our Master datastore</p>
+    <pre>
+127.0.0.1:6379> HMSET Book:1 name "Infinite Jest" author "David Foster Wallace"
+OK
+    </pre>
+    </section>
+    <section class="col-md-6">
+       <h3>Redis Slave</h3>
+       <pre>
+$ ~/redis/src/redis-server --dbfilename slave.rdb --port 6380
+       </pre>
+       <h4>Redis CLI session of <strong>Redis Slave</strong></h4>
+<pre>
+$ ~/redis/src/redis-cli -p 6380
+127.0.0.1:6380> DBSIZE
+(integer) 0
+</pre>
+   <p>Now, we'll issue the <span class="label label-default">SLAVEOF</span> 
+   command to make this instance replicate the master's content:</p>
+   <pre>
+127.0.0.1:6380> SLAVEOF localhost 6379
+OK
+   </pre>
+    <p>After adding the <code>Book:1</code> Redis hash to our Master instance, 
+    we'll check to see if the key has been replicated to our slave instance:</p>
+    <pre>
+127.0.0.1:6380> KEYS *
+1) "Book:1"
+127.0.0.1:6380> HGETALL Book:1
+1) "name"
+2) "Infinite Jest"
+3) "author"
+4) "David Foster Wallace"
+    </pre>
+    <p>The default mode for Redis slaves is readonly, meaning that if we issue
+    any Redis commands that change the value stored at a key, we'll receive the 
+    following:</p>
+    <pre>
+127.0.0.1:6380> HSET Book:1 copyrightYear 1996
+(error) READONLY You can't write against a read only slave.
+       </pre>
+ </div>
+
+
+
+</div>
