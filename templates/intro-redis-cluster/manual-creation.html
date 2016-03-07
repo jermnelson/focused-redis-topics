@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-8">
+    {# START Exercise #}
+    <h3 class="panel-title">Manually Running a Redis Cluster</h3>
+    <p>
+    We'll start by manually create a minimal cluster with three master nodes and three
+    slaves.    
+    </p>
+    <pre>
+$ mkdir cluster-test
+$ cd cluster-test
+$ mkdir 7000 7001 7002 7003 7004 7005
+$ touch 7000/redis.conf
+$ vi 7000/redis.conf
+$ cp 7000/redis.conf 7001/.
+$ vi 7001/redis.conf
+...
+$ cp ~/redis/src/redis-server .
+$ cd 7000
+$ ~/redis/src/redis-server redis.conf
+# New terminal tab
+$ cd ../7001
+$ ~/redis/src/redis-server redis.conf
+...
+$ ~/redis/src/redis-server redis.conf
+    </pre>
+    <p>Install the Ruby Redis gem and run the <code>redis-trib.rb</code></p>
+    <pre>
+$ sudo gem install redis
+$ cd ../../
+$ .~/redis/src/redis-trib.rb create --replicas 1 127.0.0.1:7000 127.0.0.1:7001 \
+127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005
+    </pre>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Sample <strong style="color: red; font-size: 1.1em">redis.conf</strong></div>
+            <div class="card-block">
+                <p class="card-text">Here is the example <code>redis.conf</code> we are
+                using for each of Redis cluster nodes</p>
+                <pre>
+port 7000
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+appendonly yes
+                </pre>
+                <p class="card-text">We need to change the port number to the correct value for the node, i.e.
+                for node 7002, we need specify the correct port number for that node's <code>redis.conf</code>
+                configuration file.</p>
+            </div>
+        </div>
+    </div>
+</div>
