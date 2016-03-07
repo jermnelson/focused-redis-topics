@@ -26,4 +26,4 @@ def home():
     return render_template("index.html")
 
 if __name__ == '__main__':
-    course.run(host='0.0.0.0', port=20160, debug=True)
+    course.run(host='0.0.0.0', port=5001, debug=True)

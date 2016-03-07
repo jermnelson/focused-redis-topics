@@ -1,0 +1,34 @@
+<h2>Partitioning</h2>
+<div class="row">
+    <section class="col-md-6">
+        <div class="card">
+            <div class="card-block">
+                <h4 class='card-title'>Composite Partitioning</h4>
+                 <p class="card-text">Redis cluster uses a form of composite 
+                 partitioning called consistent hashing that calculates what 
+                 Redis instance any particular key is assigned called 
+                 a <strong>hash slot</strong>.
+                </p>
+                <p class="card-text">The hash slot is the CRC16 hash 
+                algorithm applied to the key and then the computation of a modulo using 16384. 
+                The specific algorithm used by Redis cluster to calculate the hash slot for a key:
+                <ol>
+                    <li>The cyclic redundancy check (CRC) using a polynomial length of 17-bits or CRC16 
+                     is calculated on the Redis key </li>
+                    <li>The modulo 16384 of the value is then calculated to get the 
+                      <strong>hash slot</strong> for the key.</li>
+                </ol>
+
+            </div>
+        </div>    
+    </section>
+    <section class="col-md-6">
+        <p class="lead">
+           Each master node is assigned a sub-range of hash slots and the key and value 
+           will reside on that Redis instance.
+       </p>
+    </section>
+</div>
+<div class="row">
+
+</div>

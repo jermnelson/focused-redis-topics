@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block main %}
-<h3>Focused Topics in Redis Day 1</h3>
+<h3>Focused Topics in Redis Day 1 -  #4</h3>
 <h1>Introduction to Redis Cluster</h1>
 <div class="row">
     <section class="col-md-4">
@@ -20,9 +20,14 @@
      <div class="card-block">
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
+          <h4>Background</h4>
+          <li><a href="#partitioning">Partitioning</a></li> 
+          <li><a href="#topology-protocol">Topology &amp; Protocol</a></li> 
+          <li><a href="#six-node-redis-cluster">6 Node Redis Cluster</a></li>
           <h4>Starting Cluster</h4>
+          <li><a href="#manual-creation">Manual Cluster Creation</a></li>
           <li><a href="#create-cluster">Create Cluster</a></li>
-          <li><a href="#manual-creation">Manually</a></li>
+          <li><a href="#configuration">Configuration</a></li>
           <h4>Redis Client Support</h4>
           <li><a href="#redis-cli">Redis CLI</a></li>
           <li><a href="#ruby">Ruby - <em>redis-rb-cluster</em></a></li>
@@ -33,8 +38,31 @@
      </div>
     </div>
     </section>
+    <section class="col-md-7">
+        <p class="lead">
+            Redis Cluster provides one method of running a Redis installation where
+            data is sharded</a> across multiple Redis
+            instances while providing a degree of availability for continuing operations
+            in the event of partial node failure or communication failure.
+        </p>
+        <p class="lead">
+            This topics starts with an overview of a minimal Redis cluster with an 
+            demonstration of the composite hashing approach used by Redis 
+        </p>
+    </section>
 </div>
-
+<a id="partitioning"></a>
+{% include 'intro-redis-cluster/partitioning.html' %}
 <hr>
-{% include 'master-slave-replication/ldfs.html' %}
+<a id="topology-protocol"></a>
+{% include 'intro-redis-cluster/topology-protocol.html' %}
+<hr>
+<a id="six-node-redis-cluster"></a>
+{% include 'intro-redis-cluster/six-node-redis-cluster.html' %}
+<hr>
+<a id="manual-creation"></a>
+{% include 'intro-redis-cluster/manual-creation.html' %}
+<hr>
+<a id="ldfs"></a>
+{% include 'intro-redis-cluster/ldfs.html' %}
 {% endblock %}

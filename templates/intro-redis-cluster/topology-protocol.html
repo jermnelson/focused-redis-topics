@@ -1,0 +1,30 @@
+<h2>Cluster Topology &amp; Redis Cluster Protocol</h2>
+<div class="row">
+    <section class="col-md-4">
+        <div class="card card-inverse card-primary text-xs-center">
+            <div class="card-block">
+                <h4 class="card-title">Mesh Network</h4>
+                <div class="card-text">
+                Nodes in the Redis Cluster use the Redis cluster protocol to connect 
+                with every other node in the Redis cluster for a mesh network topology.
+                Nodes communicate using a TCP gossip protocol and along with a 
+                configuration update mechanism in order to reduce the number of messages
+                being exchanged between nodes.
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="col-md-8">
+    <p class="lead">
+    When a Redis cluster is running, each node has two TCP sockets open: 
+    <ul> 
+        <li>First is the standard Redis protocol for connecting clients (default port 6379 for the first node)</li>
+        <li>Second port is calculated from the sum of the first port plus 10000 (16379 for the default port) and
+            binary protocol for node-to-node communication. </li>
+           
+    </ul>
+    Clients should never need to connect directly with the cluster bus port but with the lower, standard port. 
+     
+   </p>
+    </section>
+</div>
