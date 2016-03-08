@@ -12,22 +12,29 @@
 
 {% block main %}
 <h3>Focused Topics in Redis Day 2 - #5</h3>
-<h1>PUB/SUB</h1>
+<h1>Pub/Sub</h1>
 <div class="row">
     <section class="col-md-8">
+	    <p class="lead">
+                 Redis is well suited to supporting the 
+                 Publish/Subscribe (Pub/Sub) model where publisher applications 
+		 sends messages to one or more channels that subscriber 
+		 applications monitor and then react to the messages that posted to
+		 the channel. 
+	    </p>
     </section>
     <section class="col-md-4">
     <div class="card card-inverse card-warning">
      <div class="card-block">
        <h3 class="card-title">In this topic &hellip;</h3>
-       <ul>
-          <h4>Starting Cluster</h4>
-          <li><a href="#create-cluster">Create Cluster</a></li>
-          <li><a href="#manual-creation">Manually</a></li>
-          <h4>Redis Client Support</h4>
-          <li><a href="#redis-cli">Redis CLI</a></li>
-          <li><a href="#ruby">Ruby - <em>redis-rb-cluster</em></a></li>
-          <li><a href="#python">Python-based</a></li>
+       <ul>  
+          <h4>Overview</h4>
+          <li><a href="#messaging-model">Messaging Pattern</a></li>
+          <li><a href="#message-syntax">Message Syntax</a></li>
+          <h4>Using Pub/Sub</h4>
+          <li><a href="#commands-basic-operation">Commands and Basic Operation</a></li>
+          <li><a href="#pattern-matching-commands">Pattern Matching Commands</a></li>
+          <li><a href="#with-cluster">With Redis Cluster</a></li>
           <h4>Use Cases</h4>
           <li><a href="#ldfs">Linked Data Fragments Server</a></li>
        </ul>
@@ -36,5 +43,20 @@
     </section>
 </div>
 <hr>
-{% include 'master-slave-replication/ldfs.html' %}
+<a id="messaging-model"></a>
+{% include 'pubsub/messaging-model.html' %}
+<hr>
+<a id="message-syntax"></a>
+{% include 'pubsub/message-syntax.html' %}
+<hr>
+<a id="commands-basic-operation"></a>
+{% include 'pubsub/commands-basic-operation.html' %}
+<hr>
+<a name="pattern-matching-commands"></a>
+{% include 'pubsub/pattern-matching-commands.html' %}
+<hr>
+<a name="with-cluster"></a>
+{% include 'pubsub/with-cluster.html' %}
+<hr>
+{% include 'pubsub/ldfs.html' %}
 {% endblock %}

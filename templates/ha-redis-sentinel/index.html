@@ -18,19 +18,46 @@
      <div class="card-block">
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
-          <h4>Sentinel Commands</h4>
+          <h4>Sentinel Overview</h4>
+	  <li><a href="#configuration">Configuration</a></li>
+	  <li><a href="#startup">Startup</a></li>
           <li><a href="#commands">Commands</a></li>
-          <h4>Configuration</h4>
-          <li><a href="#keyspace-notify">Overview</a></li>
-          <li><a href="#keyspace-notify-options">Options</a></li>
+	  <h4>Sentinel Operations</h4>
+	  <li><a href="#monitoring">Monitoring</a></li>
+	  <li><a href="#notifying">Notifying</a></li>
           <h4>Use Cases</h4>
           <li><a href="#ldfs">Linked Data Fragments Server</a></li>
        </ul>
      </div>
     </div>
     </section>
-
+    <section class="col-md-6">
+<p class="lead">
+ From the Redis Sentinel documentation, Redis Sentinel manages Redis instances through four main ways:
+</p>
+ <ul class="lead">
+  <li><strong>Monitors</strong> running Redis masters and slaves</li>
+  <li><strong>Notifies</strong> system administrators or monitoring software of problems with Redis instances</li>
+  <li><strong>Automatic failover</strong> by promoting running slaves to master if a master instance is 
+  experiencing problems</li>
+  <li><strong>Configuration provider</strong> for clients to connect and discover the address for a given
+   Redis master.</li> Notifying Notifying 
+ </ul>
 </div>
 <hr>
-{% include 'master-slave-replication/ldfs.html' %}
+<a id="configuration"></a>
+{% include 'ha-redis-sentinel/configuration.html' %}
+<hr>
+<a id="startup"></a>
+{% include 'ha-redis-sentinel/startup.html' %}
+<hr>
+<a id="commands"></a>
+<hr>
+<a id="monitoring"></a>
+{% include 'ha-redis-sentinel/monitoring.html' %}
+<hr>
+<a id="notifying"></a>
+{% include 'ha-redis-sentinel/notifying.html' %}
+<hr>
+{% include 'ha-redis-sentinel/ldfs.html' %}
 {% endblock %}

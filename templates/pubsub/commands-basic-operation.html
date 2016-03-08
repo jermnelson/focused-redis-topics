@@ -1,0 +1,57 @@
+<div class="row">
+   <div class="col-md-5">
+   <h3>Commands for Pub/Sub</h3>
+    <ul class="list-group">
+     <li class="list-group-item list-group-item-success">
+       <strong><a href="http://redis.io/commands/subscribe">SUBSCRIBE</a> <em>channel</em> [<em>channel</em> &hellip;]</strong>
+     </li>
+     <li class="list-group-item">
+      <strong><a href="http://redis.io/commands/publish">PUBLISH</a> <em>channel</em> <em>message</em></strong>
+     </li>
+     <li class="list-group-item list-group-item-success">
+       <strong><a href="http://redis.io/commands/unsubscribe">UNSUBSCRIBE</a> [<em>channel</em> [<em>channel</em> &hellip;]]</strong>
+     </li>
+     <li class="list-group-item ">
+       <strong><a href="http://redis.io/commands/psubscribe">PSUBSCRIBE</a> <em>pattern</em> [<em>pattern</em> &hellip;]</strong>
+     </li>
+     <li class="list-group-item list-group-item-success">
+      <strong><a href="http://redis.io/commands/punsubscribe">PUNSUBSCRIBE</a>[<em>channel</em> [<em>channel</em> &hellip;]]
+      </strong>
+     </li>
+    </ul>
+   </div>
+   <div class="col-md-7">
+<h2>Basic Pub/Sub Operation</h2>
+<p>Running a single Redis instance, we launch two <code>redis-cli</code>
+sessions, the first client will have the publisher role and the second 
+client will have the consumer role.</p>
+   </div>
+</div>
+<br>
+<div class="row">
+   <section class="col-md-6">
+     <h4>Publisher <code>redis-cli</code></h4>
+	    <pre>
+$ ../redis/src/redis-cli
+127.0.0.1:6379> PUBLISH user:1:msgs "How is everything?"
+(integer) 1
+	    </pre>
+   </section>
+   <section class="col-md-6">
+         <h4>Consumer <code>redis-cli</code></h4>
+         <pre>
+$ ../redis/src/redis-cli
+127.0.0.1:6379> SUBSCRIBE user:1:msgs user:2:msgs
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "user:1:msgs"
+3) (integer) 1
+1) "subscribe"
+2) "user:2:msgs"
+3) (integer) 2
+1) "message"
+2) "user:1:msgs"
+3) "How is everything?"
+        </pre>
+   </section>
+</div>
