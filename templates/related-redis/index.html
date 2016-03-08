@@ -11,8 +11,8 @@
 
 
 {% block main %}
-<h3>Focused Topics in Redis Day 3</h3>
-<h1>Related Messaging Technologies</h1>
+<h3>Focused Topics in Redis Day 3 - #11</h3>
+<h1>Related Technologies</h1>
 <div class="row">
     <section class="col-md-8">
         <p class="lead">
@@ -28,12 +28,10 @@
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
 	  <h4>Sharding/Cluster Alternatives</h4>
-	  <li><a href="#">Twemproxy</a></li>
-	  <li><a href="#">Dynomite</a> </li>
+	  <li><a href="#twemproxy">Twemproxy</a></li>
+	  <li><a href="#dynomite">Dynomite</a> </li>
           <h4>Discus</h4>
           <li><a href="#discus">Discus</a></li>
-          <li><a href="#memory">Memory</a></li>
-          <li><a href="#">LRU Configuration</a></li>
           <h4>Twemproxy</h4>
           <li><a href="#latency-doctor">Latency Doctor</a></li>
           <h4>Use Cases</h4>
@@ -46,9 +44,11 @@
 </div>
 <hr>
 <a id="twemproxy"></a>
+{% include 'related-redis/twemproxy.html' %}
 <hr>
 <a id="dynomite"></a>
-<p>Netflix <a href="https://github.com/Netflix/dynomite">dynomite</a></p>
+{% include 'related-redis/dynomite.html' %}
+<hr>
 <a id="ldfs"></a>
 {% include 'related-redis/ldfs.html' %}
 {% endblock %}
