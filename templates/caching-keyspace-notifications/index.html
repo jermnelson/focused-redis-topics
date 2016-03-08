@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block main %}
-<h3>Focused Topics in Redis Day 3</h3>
+<h3>Focused Topics in Redis Day 3 - #9</h3>
 <h1>Caching &amp; Keyspace Notifications</h1>
 <div class="row">
     <section class="col-md-8">
@@ -35,7 +35,7 @@
           <li><a href="#expire">Default Expiration</a></li>
           <li><a href="#lru-options">LRU Options</a></li>
           <li><a href="#lru-configuration">LRU Configuration</a></li>
-          <h4>Keyspace Notifications through PUB/SUB</h4>
+          <h4>Keyspace Notifications</h4>
           <li><a href="#keyspace-notify">Overview</a></li>
           <li><a href="#keyspace-notify-options">Options</a></li>
           <h4>Use Cases</h4>
@@ -46,6 +46,21 @@
     </section>
 
 </div>
+<hr>
+<a name="expire"></a>
+{% include 'caching-keyspace-notifications/default-expiration.html' %}
+<hr>
+<a name="lru-options"></a>
+{% include 'caching-keyspace-notifications/lru-options.html' %}
+<hr>
+<a name="lru-configuration"></a>
+{% include 'caching-keyspace-notifications/lru-configuration.html' %}
+<hr>
+<a name="keyspace-notify"></a>
+{% include 'caching-keyspace-notifications/keyspace-notify.html' %}
+<hr>
+<a name="keyspace-notify-options"></a>
+{% include 'caching-keyspace-notifications/keyspace-notify-options.html' %}
 <hr>
 {% include 'master-slave-replication/ldfs.html' %}
 {% endblock %}

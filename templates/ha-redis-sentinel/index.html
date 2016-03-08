@@ -25,6 +25,8 @@
 	  <h4>Sentinel Operations</h4>
 	  <li><a href="#monitoring">Monitoring</a></li>
 	  <li><a href="#notifying">Notifying</a></li>
+          <li><a href="#failover">Automatic failover</a></li>
+          <li><a href="#config-provider">Configuration Provider</a></li>
           <h4>Use Cases</h4>
           <li><a href="#ldfs">Linked Data Fragments Server</a></li>
        </ul>
@@ -41,7 +43,7 @@
   <li><strong>Automatic failover</strong> by promoting running slaves to master if a master instance is 
   experiencing problems</li>
   <li><strong>Configuration provider</strong> for clients to connect and discover the address for a given
-   Redis master.</li> Notifying Notifying 
+   Redis master.</li>  
  </ul>
 </div>
 <hr>
@@ -58,6 +60,12 @@
 <hr>
 <a id="notifying"></a>
 {% include 'ha-redis-sentinel/notifying.html' %}
+<hr>
+<a id="failover"></a>
+{% include 'ha-redis-sentinel/failover.html' %}
+<hr>
+<a id="config-provider"></a>
+{% include 'ha-redis-sentinel/config-provider.html' %}
 <hr>
 {% include 'ha-redis-sentinel/ldfs.html' %}
 {% endblock %}
