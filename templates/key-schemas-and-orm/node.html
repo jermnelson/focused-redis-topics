@@ -2,35 +2,84 @@
 <div class="row">
   <section class="col-md-4">
     <h3>Nohm</h3>
+    <p class="lead">A node.js implementation of a Redis Object Relations mapper.
+    Project is available at <a href="http://maritz.github.com/nohm/">http://maritz.github.com/nohm/</a>
+    </p> 
   </section>
   <section class="col-md-4">
    <pre>
-    
+var nohm = require('nohm').Nohm;
+var redis = require('redis').createClient();
 
+nohm.setClient(redis);
+nohm.setPrefix('catalog'); 
+
+nohm.model('Book', {
+  properties: {
+    title: {
+      type: 'string',
+      unique: false,
+      validations: [
+        'notEmpty'
+      ]
+    },
+    author: {
+      type: 'string',
+      unique: false
+    },
+    price: {
+      type: 'integer',
+      defaultValue: 20
+    }
+ }
+});
+
+nohm.model('Sales', {
+  properties: {
+    salesDate: {
+      type: 'datetime'
+    }
+  }
+});
+
+var infiniteJest = nohm.factory('Book');
+var bookSales = nohm.factory('Sales');
+
+
+infiniteJest.p({
+  title: 'Infinite Jest',
+  author: 'David Foster Wallace',
+  price: 20
+});
+
+bookSales.p({
+  salesDate: '2016-03-09'
+});
+
+bookSales.link(infiniteJest, 'item');
+
+infiniteJest.save();
+bookSales.save();
    </pre>
   </section>
   <section class="col-md-4">
    <h3>Redis Key Structure</h3>
    <pre>
-
-
-   </pre>
-  </section>
-</div>
-<div class="row">
-  <section class="col-md-4">
-    <h3>Redis Objects</h3>
-  </section>
-  <section class="col-md-4">
-   <pre>
-    
-
-   </pre>
-  </section>
-  <section class="col-md-4">
-   <h3>Redis Key Structure</h3>
-   <pre>
-
+127.0.0.1:6379> KEYS *
+ 1) "catalog:hash:Sales:ilkx1bwy9813lk9wqtrb"
+ 2) "catalog:meta:idGenerator:Book"
+ 3) "catalog:meta:version:Sales"
+ 4) "catalog:meta:version:Book"
+ 5) "catalog:meta:properties:Sales"
+ 6) "catalog:relations:Book:itemForeign:Sales:ilkx1bwxls4rf8loq10"
+ 7) "catalog:meta:idGenerator:Sales"
+ 8) "catalog:relationKeys:Book:ilkx1bwxls4rf8loq10"
+ 9) "catalog:relationKeys:Sales:ilkx1bwy9813lk9wqtrb"
+10) "catalog:idsets:Book"
+11) "catalog:relations:Sales:item:Book:ilkx1bwy9813lk9wqtrb"
+12) "catalog:meta:properties:Book"
+13) "catalog:idsets:Sales"
+14) "catalog:hash:Book:ilkx1bwxls4rf8loq10"
 
    </pre>
   </section>

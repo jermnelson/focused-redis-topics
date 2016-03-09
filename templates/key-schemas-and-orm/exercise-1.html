@@ -5,18 +5,39 @@
   command.
 </p>
 <div class="row">
-    <section class="col-md-8">
+    <section class="col-md-11">
     <code>
     <pre>
-
+127.0.0.1:6379> MONITOR
+OK
+1457532195.717891 [0 127.0.0.1:50575] "info"
+1457532195.722390 [0 127.0.0.1:50575] "get" "catalog:meta:version:Book"
+1457532195.722526 [0 127.0.0.1:50575] "get" "catalog:meta:version:Sales"
+1457532195.722613 [0 127.0.0.1:50575] "sismember" "catalog:idsets:Book" "-1457531830657"
+1457532195.722795 [0 127.0.0.1:50575] "sismember" "catalog:idsets:Sales" "-1457531552414"
+1457532195.726865 [0 127.0.0.1:50575] "set" "catalog:meta:version:Book" "a4f06ba1f03cf36e89cf433a523c41736d97c954"
+1457532195.726920 [0 127.0.0.1:50575] "set" "catalog:meta:idGenerator:Book" "default"
+1457532195.726952 [0 127.0.0.1:50575] "set" "catalog:meta:properties:Book" "{\"title\":{\"type\":\"string\",\"unique\":false,\"validations\":[\"notEmpty\"]},\"author\":{\"type\":\"string\",\"unique\":false},\"price\":{\"type\":\"integer\",\"defaultValue\":20}}"
+1457532195.727017 [0 127.0.0.1:50575] "set" "catalog:meta:version:Sales" "c9ba341ce99c8fe91d9ecfe6d10297d46640fd88"
+1457532195.727043 [0 127.0.0.1:50575] "set" "catalog:meta:idGenerator:Sales" "default"
+1457532195.727060 [0 127.0.0.1:50575] "set" "catalog:meta:properties:Sales" "{\"salesDate\":{\"type\":\"datetime\"}}"
+1457532195.730246 [0 127.0.0.1:50575] "sadd" "catalog:idsets:Book" "ilkx1bwxls4rf8loq10"
+1457532195.730651 [0 127.0.0.1:50575] "sadd" "catalog:idsets:Sales" "ilkx1bwy9813lk9wqtrb"
+1457532195.733823 [0 127.0.0.1:50575] "MULTI"
+1457532195.733858 [0 127.0.0.1:50575] "hmset" "catalog:hash:Book:ilkx1bwxls4rf8loq10" "title" "Infinite Jest" "author" "David Foster Wallace" "price" "20" "__meta_version" "a4f06ba1f03cf36e89cf433a523c41736d97c954"
+1457532195.733911 [0 127.0.0.1:50575] "EXEC"
+1457532195.733917 [0 127.0.0.1:50575] "MULTI"
+1457532195.734083 [0 127.0.0.1:50575] "hmset" "catalog:hash:Sales:ilkx1bwy9813lk9wqtrb" "salesDate" "2016-03-09" "__meta_version" "c9ba341ce99c8fe91d9ecfe6d10297d46640fd88"
+1457532195.734122 [0 127.0.0.1:50575] "EXEC"
+1457532195.736822 [0 127.0.0.1:50575] "MULTI"
+1457532195.736939 [0 127.0.0.1:50575] "sadd" "catalog:relationKeys:Sales:ilkx1bwy9813lk9wqtrb" "catalog:relations:Sales:item:Book:ilkx1bwy9813lk9wqtrb"
+1457532195.736972 [0 127.0.0.1:50575] "sadd" "catalog:relations:Sales:item:Book:ilkx1bwy9813lk9wqtrb" "ilkx1bwxls4rf8loq10"
+1457532195.736996 [0 127.0.0.1:50575] "EXEC"
+1457532195.737128 [0 127.0.0.1:50575] "MULTI"
+1457532195.737464 [0 127.0.0.1:50575] "sadd" "catalog:relationKeys:Book:ilkx1bwxls4rf8loq10" "catalog:relations:Book:itemForeign:Sales:ilkx1bwxls4rf8loq10"
+1457532195.737495 [0 127.0.0.1:50575] "sadd" "catalog:relations:Book:itemForeign:Sales:ilkx1bwxls4rf8loq10" "ilkx1bwy9813lk9wqtrb"
+1457532195.737518 [0 127.0.0.1:50575] "EXEC"
     </pre>
     </code>
-    </section>
-    <section class="col-md-4">
-    <p>
-        From the command-line with each of these Node.js clients installed and 
-        working, we'll create a simple application and look at how the Node.js
-        ORM constructs a Redis key schema.
-    </p>
     </section>
 </div>

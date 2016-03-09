@@ -24,7 +24,7 @@
   <a href="#sorted-set">Sorted Sets</a>. Other data structures are stored as
   strings but have Redis commands for special uses. These are the 
   <a href="#bitmap">Bitmap</a> data type and the
-  <a href="#hll">HyperLogLogs</a> data type.
+  <a href="#hll">HyperLogLogs</a> data type. 
   </p> 
  </div>
  <div class="col-md-4">
@@ -40,6 +40,7 @@
      <li><a href="#sorted-set">Sorted Set</a> data type</li>
      <li><a href="#bitmap">Bitmap</a> data type</li>
      <li><a href="#hll">HyperLogLogs</a> data type</li>
+     <li><a href="#geo">Geospatial</a> data type</li>
      <h4>Exercises</h4>
      <li><a href="#E1">Key Commands</a></li>
      <li><a href="#E2">Using <em>String</em> data type</a></li>
@@ -1011,20 +1012,9 @@ OK
  </div>
 </div>
 <hr>
-{#
-{% import 'snippets/labs.html' as labs %}
-<h1>Lab Assignment</h1>
-<div class="row">
-  <div class="col-md-6 well well-sm"><a name="lab1"></a>
-   {% set dashboard = 'What data structures may be useful for the Santa Sleigh Dashboard?' %}
-  {{ labs.lab("Santa's Naughty-or-Nice Dashboard", 'img/list64.png', dashboard) }} 
-  </div>
-  <div class="col-md-6 well well-sm"><a name="lab2"></a>
-   {% set kanban = 'What data structures my be useful for the Elf Kanban 4 Toys?' %}
-  {{ labs.lab('Elf Kanban 4 Toys', 'img/toy64.png', kanban) }}  
-  </div>
-</div>
-#}
+<a id="geo"></a>
+{% include 'data-structures/geo.html' %}
+<hr>
 <a href="#" id="ldfs"></a>
 {% include 'data-structures/ldfs.html' %}
 <hr>

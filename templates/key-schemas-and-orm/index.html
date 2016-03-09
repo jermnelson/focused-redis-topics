@@ -23,12 +23,12 @@
           <li><a href="#delimiters">Delimiters</a></li>
           <h4>ORMs</h4>
           <li><a href="#node">Node.js ORMs</a></li>
-          <li><a href="#python">Python-based ORMs</a></li>
-          <li><a href="#ruby">Ruby-based ORMs</a></li>
+          {#<li><a href="#python">Python-based ORMs</a></li>
+          <li><a href="#ruby">Ruby-based ORMs</a></li>#}
           <h4>Exercises</h4>
           <li><a href="#E1">Using MONITOR mode</a></li>
-          <h4>Use Cases</h4>
-          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+          {#<h4>Use Cases</h4>
+          <li><a href="#ldfs">Linked Data Fragments Server</a></li> #}
        </ul>
      </div>
     </div>
@@ -39,8 +39,18 @@
     Based on a <a href="http://redis.io/topics/data-types-intro">brief mention</a> in the 
     official Redis documentation on suggested rules about Redis keys, a consistent key 
     naming schema improves comprehensibility and maintainability of your Redis solution 
-    while positioning the datastore for future growth.</p>
-   <h3>Relationship Modeling Key Words <a id="relationship-words"></a></h3>
+    while positioning the datastore for future growth. Redis itself does not have any 
+    schema checking or validation functions although some basic validation can be done 
+    through the use of the <span class="label label-default">EXISTS</span> and 
+    <span class="label label-default">TYPE</span> 
+    Redis commands. 
+    </p>
+   <h3>Relationship Modeling<a id="relationship-words"></a></h3>
+   <p>A key schema should provide guidance for adding new Redis keys to an 
+   existing Redis-based application. An effective Redis Key schema establishes a
+   naming conventions relating keys together. These relationships loosely couple 
+   data structures together onto which application and business logic can apply through 
+   client code.</p>
    <h3>Delimiters <a id="delimiters"></a></h3>
    <p>The most commonly used delimiters between words used in Redis Keys and one seen 
     through-out Redis documentation and examples is a colon 
@@ -49,8 +59,11 @@
     <strong class="label label-primary"> / </strong> and period 
     <strong class="label label-primary"> . </strong>.
    </p>
-  </section>
+     </section>
  </div>
+ <hr>
+ <a id="book"></a>
+ {% include 'key-schemas-and-orm/book.html' %}
  <hr>
  <a id="node"></a>
  {% include 'key-schemas-and-orm/node.html' %}
@@ -58,12 +71,10 @@
  {% include 'key-schemas-and-orm/exercise-1.html' %}
 
  <hr>
-  <a id="python"></a>
+ {#  <a id="python"></a>
   {% include 'key-schemas-and-orm/python.html' %} 
- <hr>
- <a id="ruby"></a>
- {% include 'key-schemas-and-orm/ruby.html' %}
- <hr>
+  
+  <hr>
  <a id="ldfs"></a>
- {% include 'key-schemas-and-orm/ldfs.html' %}
+ {% include 'key-schemas-and-orm/ldfs.html' %} #}
 {% endblock %}

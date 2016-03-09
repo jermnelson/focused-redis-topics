@@ -1,0 +1,63 @@
+<h2>Book-Film Key Schema</h2>
+<div class="row">
+    <section class="col-md-7">
+     <p class="lead">A simple Book-Film Catalog Schema</p> 
+     <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Redis Data Type</th>
+            <th>Description</th>
+            <th>Relationships</th>
+        </tr>
+        <tr>
+         <td><code>book:{counter}</code></td>
+         <td>Hash</td>
+         <td>Stores title, author, ISBN, format, copyright date, page number, 
+             and price metadata for a book
+         </td>
+         <td>Key is stored in different Genre sets and Sales ranking sorted sets</td>
+        </tr>
+        <tr>
+            <td><code>books:{genre}</code></td>
+            <td>Set</td>
+            <td>A set of Redis keys for books classified as a genre, such as popular 
+                fiction, mysteries, science fiction, and technical books
+            </td>
+            <td>Stores all book keys that have been classified as a single genre. Used 
+                with other genre sets for calculating books in multiple genres with SINTERSTORE and books 
+                that are only in a single genre with SDIFFSTORE</td>
+        </tr>
+        <tr>
+            <td><code>books:sales-rank</code></td>
+            <td>sorted set</td>	
+            <td>Stores sales ranking of each book with the total number of titles sold as the score 
+                in the sorted set</td>
+            <td>Stores ranking of all Redis book keys</td>
+        </tr>
+     </table>
+    </section>
+    <section class="col-md-4">
+    <h4>Example Book &amp; Film Key Schema</h4>
+   <pre>
+all:sales-rank
+global:book
+book:1
+book:2
+book:3 
+books:genre:popular-fiction
+books:genre:sci-fiction
+books:format:ebook
+books:format:paperback
+books:sales-rank
+global:film
+film:1
+film:2
+films:genre:comedy
+films:genre:drama
+films:format:bluray
+films:format:dvd
+films:sales-rank    
+   </pre>
+
+    </section>
+</div>
