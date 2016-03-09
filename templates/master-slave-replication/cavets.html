@@ -1,1 +1,13 @@
 <h2>Caveats when using Replication</h2>
+<div class="row">
+  <section class="col-md-8">
+   <p class="lead">If persistence is turned off on the master A and two slaves B,C
+    the following problem can occur:</p>
+   <ul class="lead">
+    <li>We have a setup with node A acting as master, with persistence turned down, and nodes B and C replicating from node A.</li>
+    <li>A crashes, however it has some auto-restart system, that restarts the process. However since persistence is turned off, the node restarts with an empty data set.</li>
+    <li>Nodes B and C will replicate from A, which is empty, so they'll effectively destroy their copy of the data.</li>
+   </ul>
+
+  </section>
+</div>

@@ -36,15 +36,12 @@
        <ul>
             <h4>Overview</h4>
             <li><a href="#basic-replication">Basic Replication</a></li>
-            <li><a href="#partial-resync">Partial Resynchronization</a></li>
-            <li><a href="#diskless">Diskless Replication</a></li>
+            <li><a href="#partial-resync">Partial Resynchronization &amp; Diskless Replication</a></li>
             <li><a href="#commands">Commands</a></li>
             <li><a href="#cavets">Cavets</a></li>
-            <h4>Configuration</h4>
-            <li><a href="#runtime-config">Runtime</a></li>
-            <li><a href="#redis-conf">With <code>redis.conf</code></a></li>
-            <h4>Use Cases</h4>
-            <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+            <li><a href="#redis-conf">Configuration</a></li>
+            {#<h4>Use Cases</h4>
+            <li><a href="#ldfs">Linked Data Fragments Server</a></li>#}
        </ul>
      </div>
     </div>
@@ -56,17 +53,11 @@
 <a id="partial-resync"></a>
 {% include 'master-slave-replication/partial-resynchronization.html' %}
 <hr>
-<a id="diskless"></a>
-{% include 'master-slave-replication/diskless.html' %}
-<hr>
 <a id="commands"></a>
 {% include 'master-slave-replication/commands.html' %}
 <hr>
 <a id="cavets"></a>
 {% include 'master-slave-replication/cavets.html' %}
-<hr>
-<a id="runtime-config"></a>
-{% include 'master-slave-replication/runtime-config.html' %}
 <hr>
 <a id="redis-conf"></a>
 {% include 'master-slave-replication/redis-conf.html' %}
