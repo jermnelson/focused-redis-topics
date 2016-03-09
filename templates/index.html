@@ -13,7 +13,7 @@
 </address>
 <div class="row">
  <section class="col-md-4">
- <div class="card">
+ <div class="card hidden-print">
   <h3 class="card-header">Open Badge</h3>
   <img class="card-img-top center-block" src="{{ url_for('static', filename='img/badge-2016-March.svg') }}" alt="March 2016 Open Badge">
   <div class="card-block">
@@ -38,7 +38,7 @@
 		<i class="fa fa-info-circle fa-sm"></i></a></sup></h2>
 		<ul>
     <li><a href="{{ url_for('show_topic', day="day-two", topic='pubsub') }}">Pub/Sub Messaging</a></li>
-    <li><a href="{{ url_for('show_topic', day="day-two", topic='ha-redis-sentinel') }}">High Availablity w/Redis Sentinel</a></li>
+    <li><a href="{{ url_for('show_topic', day="day-two", topic='ha-redis-sentinel') }}">High Availability w/Redis Sentinel</a></li>
     <li><a href="{{ url_for('show_topic', day="day-two", topic='security') }}">Security</a></li>
             <li><a href="{{ url_for('show_topic', day="day-two", topic='lua-scripting') }}">Lua Scripting</a></li>
     
