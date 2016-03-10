@@ -22,6 +22,16 @@
 		 applications monitor and then react to the messages that posted to
 		 the channel. 
 	    </p>
+            <div class="card card-invert card-warning">
+                <div class="card-block">
+                    <p class="card-text">
+                  An important limitation of Pub/Sub that does NOT necessary guarantee  
+                 the delivery of messages i.e. Redis Pub/Sub is fire and forget. Messages published 
+                 to a channel are not assured to be delivered to the client monitoring the channel 
+                 by subscription.</p> 
+                </div>
+
+            </div>
     </section>
     <section class="col-md-4">
     <div class="card card-inverse card-warning">
@@ -35,8 +45,8 @@
           <li><a href="#commands-basic-operation">Commands and Basic Operation</a></li>
           <li><a href="#pattern-matching-commands">Pattern Matching Commands</a></li>
           <li><a href="#with-cluster">With Redis Cluster</a></li>
-          <h4>Use Cases</h4>
-          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+          {#<h4>Use Cases</h4>
+          <li><a href="#ldfs">Linked Data Fragments Server</a></li>#}
        </ul>
      </div>
     </div>
