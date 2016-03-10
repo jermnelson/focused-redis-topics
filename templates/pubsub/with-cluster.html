@@ -1,18 +1,20 @@
 <h2>Pub/Sub with Redis Cluster</h2>
 <div class="row">
-    <section class="col-md-5">
+    <section class="col-md-3">
      <p class="lead">To experiment with Pub/Sub and Redis Cluster, 
      we will use a <a href="https://github.com/Grokzen/redis-py-cluster">Python Redis Cluster</a> 
      for a simple client consumer. 
     </section>
-    <section class="col-md-7">
+    <section class="col-md-9">
     <pre>
 >>> from rediscluster import StrictRedisCluster
 >>> startup_nodes = [{"host": "127.0.0.1", "port": "7001"}]
 >>> messenger_cluster = StrictRedisCluster(startup_nodes=startup_nodes,
 				       decode_response=True)
-
-
+>>> person_consumer = messenger_cluster.pubsub()
+>>> person_consumer.subscribe("chat_room")
+>>> person_consumer.get_message()
+{'channel': 'chat_room', 'type': 'message', 'data': "What's happening?", 'pattern': None}
     </pre>
     </section>
 </div>

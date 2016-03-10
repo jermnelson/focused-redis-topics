@@ -2,6 +2,38 @@
 	PUNSUBSCRIBE</h2>
 <div class="row">
     <section class="col-md-6">
-        <p class="lead">To 
+        <p class="lead">To subscribe to more than one channel, you can use the <strong>PSUBSCRIBE</strong>
+        that take a pattern to match to existing channels.</p>
+        <pre>
+PSUBSCRIBE chat_*
+*3
+$10
+psubscribe
+$6
+chat_*
+:1
+*4
+$8
+pmessage
+$6
+chat_*
+$9
+chat_room
+$18
+What is your name?
+        </pre>
+    </section>
+    <section class="col-md-6">
+        <p class="lead">To unsubscribe to multiple channels at once, you can use the <strong>PUNSUBSCRIBE</strong>
+        </p>
+    <pre>
+PUNSUBSCRIBE chat*
+*3
+$12
+punsubscribe
+$5
+chat*
+:1
+    </pre>
     </section>
 </div>

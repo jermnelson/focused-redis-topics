@@ -1,1 +1,31 @@
 <h2>Automatic Configuration with Redis Sentinel</h2>
+<div class="row">
+    <div class="col-md-7">
+        <pre>
+# CLIENTS RECONFIGURATION SCRIPT
+#
+# sentinel client-reconfig-script <master-name> <script-path>
+#
+# When the master changed because of a failover a script can be called in
+# order to perform application-specific tasks to notify the clients that the
+# configuration has changed and the master is at a different address.
+# 
+# The following arguments are passed to the script:
+#
+# <master-name> <role> <state> <from-ip> <from-port> <to-ip> <to-port>
+#
+# <state> is currently always "failover"
+# <role> is either "leader" or "observer"
+# 
+# The arguments from-ip, from-port, to-ip, to-port are used to communicate
+# the old address of the master and the new address of the elected slave
+# (now a master).
+#
+# This script should be resistant to multiple invocations.
+#
+# Example:
+#
+# sentinel client-reconfig-script mymaster /var/redis/reconfig.sh
+    </pre>
+   </div>
+</div>

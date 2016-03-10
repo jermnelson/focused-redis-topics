@@ -1,1 +1,50 @@
 <h2>Notifications &amp; Redis Sentinel</h2>
+<div class="row">
+   <section class="col-md-8">
+    <p class="lead">Here is the relevant section in <code>sentinel.conf</code></p>
+    <pre>
+# SCRIPTS EXECUTION
+#
+# sentinel notification-script and sentinel reconfig-script are used in order
+# to configure scripts that are called to notify the system administrator
+# or to reconfigure clients after a failover. The scripts are executed
+# with the following rules for error handling:
+#
+# If script exits with "1" the execution is retried later (up to a maximum
+# number of times currently set to 10).
+#
+# If script exits with "2" (or an higher value) the script execution is
+# not retried.
+#
+# If script terminates because it receives a signal the behavior is the same
+# as exit code 1.
+#
+# A script has a maximum running time of 60 seconds. After this limit is
+# reached the script is terminated with a SIGKILL and the execution retried.
+
+# NOTIFICATION SCRIPT
+#
+# sentinel notification-script <master-name> <script-path>
+# 
+# Call the specified notification script for any sentinel event that is
+# generated in the WARNING level (for instance -sdown, -odown, and so forth).
+# This script should notify the system administrator via email, SMS, or any
+# other messaging system, that there is something wrong with the monitored
+# Redis systems.
+#
+# The script is called with just two arguments: the first is the event type
+# and the second the event description.
+#
+# The script must exist and be executable in order for sentinel to start if
+# this option is provided.
+#
+# Example:
+#
+# sentinel notification-script mymaster /var/redis/notify.sh
+   </pre>
+   </section>
+   <section class="col-md-4">
+       <p class="lead">Here is an <a href="https://gist.github.com/matetsu/4539241">example</a> of a notitification script
+
+   </section>
+</div>

@@ -22,7 +22,7 @@
 		 applications monitor and then react to the messages that posted to
 		 the channel. 
 	    </p>
-            <div class="card card-invert card-warning">
+            <div class="card card-invert card-danger">
                 <div class="card-block">
                     <p class="card-text">
                   An important limitation of Pub/Sub that does NOT necessary guarantee  
@@ -56,17 +56,17 @@
 <a id="messaging-model"></a>
 {% include 'pubsub/messaging-model.html' %}
 <hr>
-<a id="message-syntax"></a>
-{% include 'pubsub/message-syntax.html' %}
-<hr>
 <a id="commands-basic-operation"></a>
 {% include 'pubsub/commands-basic-operation.html' %}
+<hr>
+<a id="message-syntax"></a>
+{% include 'pubsub/message-syntax.html' %}
 <hr>
 <a name="pattern-matching-commands"></a>
 {% include 'pubsub/pattern-matching-commands.html' %}
 <hr>
 <a name="with-cluster"></a>
 {% include 'pubsub/with-cluster.html' %}
-<hr>
-{% include 'pubsub/ldfs.html' %}
+{#<hr>
+{% include 'pubsub/ldfs.html' %} #}
 {% endblock %}

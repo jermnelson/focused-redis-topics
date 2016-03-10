@@ -5,11 +5,38 @@
         Redis Pub/Sub messages are defined as 3 or 4 part <a href="http://redis.io/topics/protocol">RESP</a> 
         (REdis Serialization Protocol) array.
         RESP is the communication protocol that Redis client communicate with Redis server and is 
-        used in other projects beside Redis. We see the raw RESP code if we use telnet and connect 
+        used in other projects beside Redis. We see the raw RESP protocol if we use telnet and connect 
         directly to Redis.
 	</p>
     </section>
     <section class="col-md-6">
-      
+        <p>First, we will connect to a single Redis instance running at port 6379 with
+        telnet.         <pre>
+$ telnet localhost 6379
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+        </pre>
+        <p>Now, we will subscribe to a <strong>chat_room</strong> channel</p> and from a <code>redis-cli</code>
+        session, we will post a message to the channel. 
+
+        <pre>
+SUBSCRIBE chat_room
+*3
+$9
+subscribe
+$9
+chat_room
+:1
+*3
+$7
+message
+$9
+chat_room
+$18
+Anybody out there?
+        </pre>
+        <p
     </section>
+
 </div>
