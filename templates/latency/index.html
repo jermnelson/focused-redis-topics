@@ -21,25 +21,98 @@
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
           <h4>Sources</h4>
-          <li><a href="#network">Network</a></li>
-          <li><a href="#memory">Memory</a></li>
-          <li><a href="#">LRU Configuration</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#monitor">Latency Monitoring</a></li>
           <h4>Tools</h4>
           <li><a href="#latency-doctor">Latency Doctor</a></li>
-          <h4>Use Cases</h4>
-          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
-       </ul>
+        </ul>
      </div>
     </div>
     </section>
     <section class="col-md-8">
+<a id="about"></a>
       <p class="lead">
-        Latency
+      Latency, as understood in the Redis community, is broken down into three ways: 
+      <ol>
+         <li><strong>command latency</strong> , is the amount of time it takes to 
+	 execute a command. Some commands are fast and operate in O(1) while other commands 
+	 have O(n) time complexity and are thereby a likely source of this type of latency.</li>
+         <li><strong>round-trip latency</strong> the time between when a client issues a 
+	 command and then receives the response from the Redis server that can be caused by 
+	 network congestion.</li>
+        <li><strong>client-latency</strong> if multiple clients attempt to connect to Redis 
+	at the same time, concurrency latency can be introduced as later clients may be waiting in queue for early client processes to complete.  
+       </li>
+       </old>
+      </p>
+       To help troubleshoot, Redis has a special mode for monitoring command latency that can be set in 
+       either <code>redis.conf</code> or from issuing a CONFIG SET for the latency-monitor-threshold directive. 
       </p>
     </section>
-
 </div>
 <hr>
-<a id="ldfs"></a>
-{% include 'latency/ldfs.html' %}
+<a id="monitor"></a>
+<h2>Latency Monitoring</h2>
+<div class="row">
+  <section class="col-md-4">
+   <p class="lead">
+   The Redis <strong>latency-monitor-threshold</strong> directive sets a limit in 
+   milliseconds that will log all or some of the commands and activity (called events) of the 
+   Redis instance that exceed that limit with a default of 0, meaning Redis does not automatically run 
+   latency monitoring but must be actively set.
+   </p>
+  </section>
+  <section class="col-md-8">
+	  <p>First, we'll set our threshold to 100 milliseconds</p>
+    <pre>
+127.0.0.1:6379> CONFIG SET latency-monitor-threshold 100
+    </pre>
+     <p>We’ll run a series of <strong>DEBUG SLEEP</strong> to demonstrate the 
+     various subcommands and functionality of Redis’s latency monitor.
+     <pre>
+127.0.0.1:6379> DEBUG SLEEP 1
+127.0.0.1:6379> DEBUG SLEEP .25
+127.0.0.1:6379> LATENCY LATEST
+1) 1) "command"
+   2) (integer) 1433877394
+   3) (integer) 250
+   4) (integer) 1000
+      </pre>
+      <p>The <strong>LATENCY LATEST</strong> the event name, the UNIX 
+      timestamp when the latency event occurred, the latest event latency in milliseconds, and 
+      the all-time maximum latency for this event.</p>
+      <p>The <strong>LATENCY HISTORY</strong> command and subcommand 
+      returns the latest 160 latency events that are being tracked</p>
+      <p>The <strong>LATENCY RESET</strong> either clear all latency 
+      events or just selected events by passing in one or more event names.</p>
+      <p>The <strong>LATENCY GRAPH</strong> command produces an ASCII-style graph 
+      of the logged latency events since the last <strong>LATENCY RESET</strong> command.
+  </section>
+</div>
+<hr>
+<a id="doctor"></a>
+<div class="row">
+   <section class="col-md-4">
+	   <p class="lead">The <strong>LATENCY DOCTOR</strong> mode provides a rich set of human-readable 
+   (with flashes of HAL 9000 from Stanley Kubrick’s film 2001!) statistical data 
+   such as average time between latency spikes, median deviations of those spikes 
+   as well as human understandable analysis of the latency events and suggestions
+   for reducing latency.</p>
+   </section>
+   <section class="col-md-8">
+	<pre>
+127.0.0.1:6379> latency doctor
+Dave, I have observed latency spikes in this Redis instance. You don't mind talking about it, do you Dave?
+
+1. command: 9 latency spikes (average 595ms, mean deviation 261ms, period 4.89 sec). Worst all time event 1044ms.
+
+I have a few advices for you:
+
+- Check your Slow Log to understand what are the commands you are running which are too slow to execute. Please check http://redis.io/commands/slowlog for more information.
+- Deleting, expiring or evicting (because of maxmemory policy) large objects is a blocking operation. If you have very large objects that are often deleted, expired, or evicted, try to fragment those objects into multiple smaller objects.
+127.0.0.1:6379>
+        </pre>
+
+   </section>
+</div>
 {% endblock %}

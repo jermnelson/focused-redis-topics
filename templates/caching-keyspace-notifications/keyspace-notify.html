@@ -1,1 +1,16 @@
 <h2>Keyspace Notifications Overview</h2>
+<div class="row">
+  <section class="col-md-4">
+   <p class="lead">The ability for an application to respond to changes that 
+   may occur to the value stored at a particular key or keys. Redis provides 
+   a mechanism for client code to subscribe to a Pub/Sub channel that monitors 
+   events related to data. Called <strong>keyspace notification</strong>, 
+   functionality for monitoring events like all the commands that change a 
+   given key, all keys receiving specific commands like HSET, or all keys 
+   that are about deleted because of an EXPIRE command.
+   </p>
+ </section>
+ <section class="col-md-8">
+   <img src="{{ url_for('static', filename='img/redis-keyspace.png') }}">
+ </section>
+</div>

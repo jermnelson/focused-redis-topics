@@ -1,7 +1,74 @@
 <h2>Default Expiration</h2>
 <div class="row">
-    <section class="col-md-5">
+    <section class="col-md-4">
      <p class="lead">As an in-memory datastore, Redis behavior when
-      it's environment is running out of memory is</p>
+      it is running out of memory can be adjusted depending
+      on the needs of the application. Redis's default policy 
+      when reaching the maximum memory available is <strong>noeviction</strong>
+      that raises an Out-of-memory OOM error.
+    </p>
+    <p>One strategy to avoid OOM, is to set <strong>EXPIRE</strong> on a key that
+     will be evicted from the datastore when it's time is up. Using the <strong>TTL</strong>
+     command gives the remaining time before a key is evicted, while the <strong>PERSIST</strong>
+     command clears an existing expiration on a key. </p>
+    <ul class="list-group">
+     <li class="list-group-item list-group-item-success">
+       <strong><a href="http://redis.io/commands/expire">EXPIRE</a> <em>key</em> <em>seconds</em></strong>
+     </li>
+     <li class="list-group-item">
+       <strong><a href="http://redis.io/commands/expireat">EXPIREAT</a> <em>key</em> <em>timestamp</em></strong>
+     </li>
+     <li class="list-group-item  list-group-item-success">
+      <strong><a href="http://redis.io/commands/info">INFO</a> [<em>section</em>]</strong>
+     </li>
+     <li class="list-group-item">
+       <strong><a href="http://redis.io/commands/ttl">TTL</a> <em>key</em></strong>
+     </li>
+     <li class="list-group-item  list-group-item-success">
+       <strong><a href="http://redis.io/commands/persist">PERSIST</a> <em>key</em></strong>
+     </li>
+    </ul>
+    </section>
+    <section class="col-md-8">
+      <p>Setting a memory ceiling for your running Redis instance is
+       accomplished by either setting the maxmemory directive either
+       in <code>redis.conf</code> or during runtime.
+      </p>
+      <pre>
+27.0.0.1:6379> CONFIG GET maxmemory
+1) "maxmemory"
+2) "1048576"
+127.0.0.1:6379> CONFIG GET maxmemory-policy
+1) "maxmemory-policy"
+2) "noeviction"
+127.0.0.1:6379> CONFIG SET maxmemory 1mb
+OK  
+      </pre>
+      <p>We'll now create a Python function that adds data until the datastore is full</p>
+      <pre>
+>>> import uuid
+>>> def add_id(redis_instance):
+        redis_key = "uuid:{}".format(redis_instance.incr("global:uuid"))
+        redis_instance.set(redis_key, uuid.uuid4()) 
+      </pre>
+      <p>Setting an expiration, polling time remaining, and clearing an existing expiration</>
+      <pre>
+127.0.0.1:6379> SADD authors "David Foster Wallace" "James Clavell" "Jane Austen"
+(integer) 3
+127.0.0.1:6379> EXPIRE authors 180
+(integer) 1
+127.0.0.1:6379> TTL authors
+(integer) 173
+127.0.0.1:6379> TTL authors
+(integer) 146
+127.0.0.1:6379> PERSIST authors
+(integer) 1
+127.0.0.1:6379> TTL authors
+(integer) -1
+127.0.0.1:6379> EXPIRE authors 10
+(integer) 1
+127.0.0.1:6379> TTL authors
+(integer) -2
+      </pre>    
     </section>
 </div>
