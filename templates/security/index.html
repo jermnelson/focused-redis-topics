@@ -26,11 +26,9 @@
        <ul>
           <h4>Overview</h4>
           <li><a href="#default">Default</a></li>
-          <li><a href="#master-slave">Master-Slave Replication</a></li>
-          <li><a href="#cluster">Cluster</a></li>
-          <li><a href="#high-availability">High Availability</a></li>
-          <h4>Use Cases</h4>
-          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+          {#<li><a href="#master-slave">Master-Slave Replication</a></li>#}
+          <li><a href="#auth">Simple Authentication</a></li>
+          <li><a href="#disabling">Disabling of Commands</a></li>
        </ul>
      </div>
     </div>
@@ -39,11 +37,23 @@
 <hr>
 {% include "security/default.html" %}
 <hr>
-{% include "security/master-slave.html" %}
-<hr>
-{% include "security/cluster.html" %}
-<hr>
-{% include "security/high-availability.html" %}
-<hr>
-{% include 'master-slave-replication/ldfs.html' %}
+<a id="disabling"></a>
+<div class="row">
+  <section class="col-md-4">
+    <h3>Disabling of Commands</h3>
+    <p>Redis allows you to disable specific commands that are dangerous in the
+    wrong hands i.e. <strong>FLUSHALL</strong> or <strong>CONFIG</strong> that you may want to disable.
+    In the <code>redis.conf</code> using the <em>rename-command</em>, you
+    can either rename the command to a hard-to-guess string or completely disable
+    completely by setting it to an empty string.
+    </p>
+  </section>
+  <section class="col-md-8">
+    <pre>
+rename-command CONFIG thisIsmynewSpecialConfigCommandName
+rename-command FLUSHALL ""
+	</pre>
+  </section>
+</div>
+{# include 'master-slave-replication/ldfs.html' #}
 {% endblock %}

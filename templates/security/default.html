@@ -3,7 +3,17 @@
 		<h2><a name="default"></a>Redis Default Security Settings</h2>
 		<p class="lead">
 		One of the biggest changes in Redis 3.2 version is how Redis's default security is 
-		handled when running Redis server. 
+		handled when running Redis server. The new Redis Protected mode is a layer of 
+                security protection, to avoid that
+                Redis instances left open on the Internet are accessed and exploited. This
+                mode is active when the following occurs:
+                <ol>
+
+                 <li>The server is not binding explicitly to a set of addresses using the
+                 "bind" directive.</li>
+                 <li>No password is configured.Before, the only way to restrict access to 
+                a Redis instance was to set a password</li>
+                </ol>  
 		</p>
 		</section>
 		<section class="col-md-6">
@@ -19,10 +29,27 @@
 OK
 		  </code>
 		  <hr>
-		  <p class="card-text lead">At startup in <em>redis.conf</em></p>
+		  <p class="card-text lead">At startup <em>redis.conf</em></p>
                 </section>
 		</div>
+                
 		</section>
-
+</div>
+<div class="row">
+   <section class="col-md-5">
+     <p>
+     Redis does have a small level of authentication which can be set in the <code>redis.conf</code>
+     with the <strong>requirepass</strong> configuration directive. Clients connecting need to first
+     send an <strong>AUTH</strong> command followed by a password.</p>
+     <p>
+     For slaves to connect to a master instance that has a password, the <strong>masterauth</strong>
+     configuration directive is used to store the master's password for the slave to authenticate.
+     </p>
+   </section>
+   <section class="col-md-6">
+    <pre>
+      requirepadd my-great-Password
+    </pre>
+   </section>
 
 </div>
