@@ -1,1 +1,21 @@
-<h2>Twemproxy</h2>
+<h2>Twemproxy 
+<a href="https://github.com/twitter/twemproxy">https://github.com/twitter/twemproxy</a></h2>
+<div class="row">
+    <section class="col-md-3">
+     <p>
+     Twemproxy is an open-source project released by Twitter for creating 
+     a caching proxy between a client and backend made up of either Memecache 
+     or Redis instances. Twemproxy separates the client calls from the 
+     datastore backend through the use of an intermediary middleware that 
+     then implements a sharding strategy based on your preferences that are
+     set in a configuration YAML file. Twemproxy supports a twelve different 
+     hash functions including md5, crc16, two versions of crc32, four variants
+     of the Fowler-Noll-Vo (fnv), among others with the  default being a 
+     fnv1a_64 hash functions.
+    </p>
+    </section>
+    <section class="col-md-6">
+     <img src="{{ url_for('static', filename='img/twemproxy.png') }}">
+
+    </section>
+</div>

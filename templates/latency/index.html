@@ -48,6 +48,10 @@
        To help troubleshoot, Redis has a special mode for monitoring command latency that can be set in 
        either <code>redis.conf</code> or from issuing a CONFIG SET for the latency-monitor-threshold directive. 
       </p>
+      <p>You can quickly run an latency check with <code>redis-cli</code>
+      <pre>
+redis-cli --latency -h {host} -p {port}
+      </pre>
     </section>
 </div>
 <hr>

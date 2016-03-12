@@ -16,9 +16,10 @@
 <div class="row">
     <section class="col-md-8">
         <p class="lead">
-            Redis-related Messaging Technologies like 
+            Redis-related Technologies like 
             Salvidore's own <a href="#discue">Discue</a> provide alternative 
-            ways for implementing a messaging framework based on Redis.
+            ways for implementing such things as cluster and messaging using Redis or
+            Redis-related standards.
         </p>
     </section>
 
@@ -27,15 +28,9 @@
      <div class="card-block">
        <h3 class="card-title">In this topic &hellip;</h3>
        <ul>
-	  <h4>Sharding/Cluster Alternatives</h4>
 	  <li><a href="#twemproxy">Twemproxy</a></li>
 	  <li><a href="#dynomite">Dynomite</a> </li>
-          <h4>Discus</h4>
           <li><a href="#discus">Discus</a></li>
-          <h4>Twemproxy</h4>
-          <li><a href="#latency-doctor">Latency Doctor</a></li>
-          <h4>Use Cases</h4>
-          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
        </ul>
      </div>
     </div>
@@ -49,6 +44,13 @@
 <a id="dynomite"></a>
 {% include 'related-redis/dynomite.html' %}
 <hr>
-<a id="ldfs"></a>
-{% include 'related-redis/ldfs.html' %}
+<a id="disque"></a>
+<h2>Disque <a href="https://github.com/antirez/disque">https://github.com/antirez/disque</a></h2>
+<div class="row">
+    <section class="col-md-5 col-md-offset-1">
+     <p class="lead">Disque is a distributed message broker created 
+      by Salvatore Sanfilippo, the creator of Redis. Disque is a message broker with 
+      at-least-once and at-most-once delivery semantics.</p>
+    </section>
+</div>
 {% endblock %}
