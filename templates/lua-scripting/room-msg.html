@@ -1,0 +1,18 @@
+<h2><small>Use Case</small> Tracking Participants in a Chat Room</h2>
+<div class="row">
+    <section class="col-md-4">
+        <p class="lead">Examples of a Lua script that takes a Room UUID
+         and emails of users in a chat room and creates a Set following
+         a simple Redis Key Schema.</p> 
+    </section>
+    <section class="col-md-8">
+        <a href="{{ url_for('static', filename='code/add-chat-room-users.lua') }}">Download</a>
+        <pre class="bg-info" style="font-weight: bold">
+local room_key = "Room:"..KEYS[1]
+for pos, email in ipairs(ARGV) do
+  redis.pcall("SADD", room_key, email)
+end
+return True
+        </pre>
+    </section>
+</div>

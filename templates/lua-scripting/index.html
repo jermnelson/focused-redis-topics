@@ -29,7 +29,7 @@
           <li><a href="#keyspace-notify">Overview</a></li>
           <li><a href="#keyspace-notify-options">Options</a></li>
           <h4>Use Cases</h4>
-          <li><a href="#ldfs">Linked Data Fragments Server</a></li>
+          <li><a href="#room-msg">Active Room Users</a></li>
        </ul>
      </div>
     </div>
@@ -277,19 +277,6 @@ Naughty-or-Nice Dashboard:<ul><li>Adding child to the naughty or nice lists</li>
   </div>
 </div>#}
 <hr>
-
-<hr>
-<div class="row">
- <h2>References and Resources</h2>
-  <ol>
-    <li>From the redis.io website: topic on
-     <a href="http://redis.io/commands/eval">EVAL</a>
-   </li>
-   <li>Lua Language 
-     <a href="http://www.lua.org/">homepage</a></li>
-  </ol>
-</div>
-<hr>
-<a id="ldfs"></a>
-{% include 'lua-scripting/ldfs.html' %}
+<a id="room-msg"></a>
+{% include 'lua-scripting/room-msg.html' %}
 {% endblock %}
