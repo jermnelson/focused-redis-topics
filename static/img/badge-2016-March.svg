@@ -15,7 +15,10 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="badge-2016-March.svg">
+   sodipodi:docname="badge-2016-March.svg"
+   inkscape:export-filename="E:\2016\focused-redis-topics\static\img\badge-2016-March.png"
+   inkscape:export-xdpi="64"
+   inkscape:export-ydpi="64">
   <defs
      id="defs2987" />
   <sodipodi:namedview
@@ -45,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
