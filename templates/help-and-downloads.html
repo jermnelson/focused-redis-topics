@@ -2,4 +2,79 @@
 
 {% block main %}
 <h1><i class="fa fa-life-bouy"></i> Help &amp; Downloads </h1>
+<p>This website's source code is available at
+<a href="https://github.com/jermnelson/focused-redis-topics">https://github.com/jermnelson/focused-redis-topics</a>.
+</p>
+<div class="row">
+    <section class="col-md-6">
+        <h3>Day 1 Topic 1 - Redis data types</h3>
+        <ul class="lead">
+            <li><a href="http://redis.io/download">Download Redis</a>, 
+                <a href="https://github.com/antirez/redis/archive/3.2.0-rc3.tar.gz">3.2 Release Candidate</a>
+            </li>
+            <li><a href="http://redis.io/topics/data-types-intro">Introduction to Redis Datatypes</a> on
+                Redis website.</li>
+
+        </ul>
+        <h3>Day 1 Topic 2 - Key Schemas and Object Relational Managers</h3>
+        <ul class="lead">
+            <li>Node.js Object Relationship Mapper: <a href="http://maritz.github.com/nohm/">Nohm</a></li> 
+        </ul>
+        <h3>Day 1 Topic 3 - Master-Slave Replication</h3>
+        <ul class="lead">
+            <li>Redis Official documentation on <a href="http://redis.io/topics/replication">replication</a></li>
+        </ul>
+        <h3>Day 1 Topic 4 - Introduction to Redis Cluster</h3>
+        <ul class="lead">
+            <li>Redis Official documentation on <a href="http://redis.io/topics/cluster-tutorial">Cluster Tutorial</a>
+               and <a href="">Redis Cluster Specficiation</a></li>
+        </ul>
+        <h3>Day 2 Topic 5 - Pub/Sub</h3>
+        <ul class="lead">
+            <li>Redis Official documentation on <a href="http://redis.io/topics/pubsub">Pub/Sub</a>
+            </li>
+            <li><a href="http://redis.io/topics/protocol">Redis Protocol Specification (RESP)</a></li>
+        </ul>
+        <h3>Day 2 Topic 6 - High Availability with Redis Sentinel</h3>
+        <ul class="lead">
+            <li>Redis Official documentation on <a href=http://redis.io/topics/sentinel">Sentinel</a></li>
+        </ul>
+    </section>
+    <section class="col-md-6">
+        <h3>Day 2 Topic 7 - Security</h3>
+        <ul class="lead">
+            <li>Redis Official documentation on <a href="http://redis.io/topics/replication">Master/Slave Replication</a>
+            </li>
+        </ul>
+        <h3>Day 2 Topic 8 - Lua Scripting</h3>
+        <ul class="lead">
+            <li>From the redis.io website: topic on
+                <a href="http://redis.io/commands/eval">EVAL</a>
+            </li>
+            <li>Lua Language 
+                <a href="http://www.lua.org/">homepage</a>
+            </li>
+            <li>
+               Download  <a href="{{ url_for('static', filename='code/add-chat-room-users.lua') }}">add-chat-room-users.lua </a>
+            </li>
+        </ul>
+        <h3>Day 3 Topic 9 - Caching &amp; Keyspace Notifications</h3>
+        <ul class="lead">
+            <li>Redis Official documentation on <a href="http://redis.io/topics/lru-cache">LRU Cache</a></li>
+            <li>Redis Official documentation on <a href="http://redis.io/topics/notifications">Keyspace Notifications</a></li>
+        </ul>     
+        <h3>Day 3 Topic 10 - Troubleshooting Redis Latency</h3>
+        <ul class="lead">
+            <li>Redis Official documentation on <a href="http://redis.io/topics/latency-monitor">Lacency Monitoring</a></li>
+            <li>Redis View Dashboard <a href="https://django-redis-views.readthedocs.org/en/latest/">documentation</a></li>
+        </ul>
+        <h3>Day 3 Topic 11 - Related Technologies</h3>
+        <ul class="lead">
+            <li><i class="fa fa-twitter"></i> <a href="https://github.com/twitter/twemproxy">Twemproxy</a></li>
+            <li><a href="https://github.com/Netflix/dynomite">Dynomite</a></li>
+            <li><a href="https://github.com/antirez/disque">Disque</a></li>
+        </ul>
+    </section>
+
+</div>
 {% endblock %}
