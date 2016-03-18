@@ -2,8 +2,21 @@
 
 {% block main %}
 <h1>Open Badge</h1>
-<p class="lead">Earn your <a href="http://openbadges.org/">Open Badge</a> for 
-participating in this course</p>
-<img class="card-img-top center-block" src="{{ url_for('static', filename='img/badge-2016-March.svg') }}" alt="March 2016 Open Badge">
-
+<div class="row">
+    <div class="col-md-4">
+    	<p class="lead">Earn your <a href="http://openbadges.org/">Open Badge</a> for 
+ 	participating in this course</p>
+	<img class="card-img-top center-block" src="{{ url_for('static', filename='img/badge-2016-March.svg') }}" alt="March 2016 Open Badge">
+    </div>
+    <div class="col-md-6">
+        <a id="criteria"></a>
+        <div class="card">
+             <h3 class="bg-success card-header">Course Open Badge Criteria</h3>
+            <div class="card-block">
+             <p class="card-text">This badge is awarded for participating in the
+              three day course taught in Denver, Colorado March 9-11<sup>th</sup> 2016.<p> 
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
